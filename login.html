@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | AutoCare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="antialiased font-sans bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-dark-bg dark:text-dark-heading flex items-center justify-center min-h-screen relative overflow-hidden">
+
+    <!-- Background Decoration -->
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-primary-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-10 animate-pulse-soft"></div>
+    <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-10 animate-pulse-soft" style="animation-delay: 1s;"></div>
+
+    <div class="w-full max-w-md p-4 relative z-10">
+                <!-- Logo -->
+        <div class="flex justify-center mb-8">
+            <a href="index.html" class="flex items-center brand-lockup"><img src="assets/img/logo-car-only.png" alt="AutoCare car mark" class="brand-mark"><span class="brand-copy"><span class="brand-name">Auto<span>Care</span></span><small class="brand-tagline">Modern Auto Repair</small></span></a>
+        </div>
+
+        <div class="card p-8 backdrop-blur-xl bg-white/90 dark:bg-dark-card/90">
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2 text-center">Welcome Back</h2>
+            <p class="text-slate-500 dark:text-slate-400 text-sm text-center mb-8">Sign in to manage your vehicle services.</p>
+            
+            <form id="loginForm" class="space-y-5">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fa-solid fa-envelope text-slate-400"></i>
+                        </div>
+                        <input type="email" id="email" class="input-field pl-10" placeholder="admin@autocare.com or user@autocare.com" required>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
+                        <a href="#" class="text-xs text-primary-600 font-medium hover:text-primary-700">Forgot password?</a>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fa-solid fa-lock text-slate-400"></i>
+                        </div>
+                        <input type="password" id="password" class="input-field pl-10 pr-10" placeholder="••••••••" required>
+                        <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 focus:outline-none dark:text-slate-300" onclick="togglePassword()">
+                            <i class="fa-regular fa-eye" id="eyeIcon"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex items-center">
+                    <input id="remember" type="checkbox" class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded">
+                    <label for="remember" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">
+                        Remember me
+                    </label>
+                </div>
+
+                <div class="p-3 bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 text-xs rounded-lg border border-blue-100 dark:border-blue-900/30">
+                    <strong>Demo Logins:</strong><br>
+                    Admin: admin@autocare.com<br>
+                    Customer: Any other email
+                </div>
+
+                <button type="submit" class="btn-primary w-full">Sign In</button>
+            </form>
+            
+            <div class="mt-6 text-center text-sm text-slate-600 dark:text-slate-400">
+                Don't have an account? <a href="register.html" class="text-primary-600 font-medium hover:text-primary-700">Register here</a>
+            </div>
+        </div>
+        
+        <!-- Quick Toggles for Demo -->
+        <div class="flex justify-center gap-4 mt-8">
+            <button id="theme-toggle" class="p-2 rounded-full bg-white dark:bg-dark-card shadow text-slate-500 hover:text-primary-600 transition">
+                <i class="fa-solid fa-moon dark:hidden"></i>
+                <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
+            </button>
+            <button id="rtl-toggle" class="px-3 py-1 rounded-full bg-white dark:bg-dark-card shadow text-xs font-bold text-slate-500 hover:text-primary-600 transition">
+                RTL
+            </button>
+            <a href="index.html" class="p-2 rounded-full bg-white dark:bg-dark-card shadow text-slate-500 hover:text-primary-600 transition">
+                <i class="fa-solid fa-house"></i>
+            </a>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        function togglePassword() {
+            const pwd = document.getElementById('password');
+            const icon = document.getElementById('eyeIcon');
+            if (pwd.type === 'password') {
+                pwd.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                pwd.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            
+            if (email === 'admin@autocare.com') {
+                window.location.href = 'admin/dashboard.html';
+            } else {
+                window.location.href = 'customer/dashboard.html';
+            }
+        });
+    </script>
+</body>
+</html>

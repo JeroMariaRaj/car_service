@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | AutoCare</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="font-sans">
+
+        <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-slate-50/90 dark:bg-slate-950/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 transition-colors duration-300">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="flex justify-between items-center h-28">
+                <a href="index.html" class="flex items-center brand-lockup"><img src="assets/img/logo-car-only.png" alt="AutoCare car mark" class="brand-mark"><span class="brand-copy"><span class="brand-name">Auto<span>Care</span></span><small class="brand-tagline">Modern Auto Repair</small></span></a>
+                
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition flex items-center gap-1">Home</a>
+                    <a href="about.html" class="text-sm font-bold text-slate-900 dark:text-white hover:text-primary-600 transition">About</a>
+                    <a href="services.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">Services</a>
+                    <a href="pricing.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">Products</a>
+                    <a href="blog.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">Blog</a>
+                    <a href="contact.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">Contact</a>
+                </div>
+                
+                <div class="flex items-center gap-4 lg:gap-6">
+                    <div class="flex items-center gap-4 text-slate-600 dark:text-white text-lg">
+                        <button id="theme-toggle" class="hover:text-slate-900 dark:hover:text-primary-600 transition dark:text-white" title="Toggle Theme">
+                            <i class="bi bi-moon-fill dark:hidden"></i>
+                            <i class="bi bi-sun-fill hidden dark:block"></i>
+                        </button>
+                        <button id="rtl-toggle" class="font-bold text-sm hover:text-slate-900 dark:hover:text-primary-600 transition dark:text-white" title="Toggle RTL">
+                            RTL
+                        </button>
+                    </div>
+                    
+                    <div class="hidden lg:flex items-center gap-3 border-l border-slate-200 dark:border-slate-700 pl-6">
+                        <a href="login.html" class="px-6 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-white text-sm font-bold hover:bg-slate-100 hover:text-slate-900 transition bg-white dark:bg-slate-950">Login</a>
+                        <a href="register.html" class="px-6 py-2 rounded-lg bg-slate-800 text-white text-sm font-bold hover:bg-slate-900 transition">Sign Up</a>
+                    </div>
+
+                    <button id="mobile-menu-btn" class="lg:hidden text-2xl text-slate-900 dark:text-white ml-2">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-20 bg-slate-900 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-primary-900/20"></div>
+        <div class="relative z-10 max-w-3xl mx-auto px-4">
+            <h1 class="text-4xl font-display font-bold text-white mb-4">About AutoCare</h1>
+            <p class="text-gray-300 text-lg">Setting the standard in premium automotive repair and maintenance.</p>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-20 bg-white dark:bg-slate-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6">Driven by Excellence. Powered by Expertise.</h2>
+                    <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                        Founded in 2010, AutoCare has grown to become the leading provider of premium automotive services. Our state-of-the-art facilities and certified master technicians ensure that your vehicle receives the absolute highest standard of care, completely transparently.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 mt-8">
+                        <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-700">
+                            <div class="text-3xl font-bold text-slate-900 dark:text-white mb-2">15+</div>
+                            <div class="text-sm text-primary-600 font-bold uppercase tracking-wider">Years Exp</div>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-700">
+                            <div class="text-3xl font-bold text-slate-900 dark:text-white mb-2">50k+</div>
+                            <div class="text-sm text-primary-600 font-bold uppercase tracking-wider">Happy Clients</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative h-[500px] rounded-[3rem] overflow-hidden shadow-xl border border-slate-200 dark:border-slate-700">
+                    <img src="assets/img/about.jpg" alt="Master Mechanic at work" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <!-- Company History & Core Values -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24">
+                <div class="bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-700">
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Our History</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                        What started as a modest two-bay garage in 2010 has rapidly expanded into a premier, multi-location automotive repair franchise. We recognized early on that the industry needed a shift towards complete transparency and digital integration. 
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Today, AutoCare serves thousands of vehicles annually, utilizing cutting-edge diagnostic equipment to ensure precision repairs every single time.
+                    </p>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-700">
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Core Values</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="bi bi-shield-check text-primary-600 text-xl mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white">Radical Transparency</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">We show you the parts, the data, and the exact pricing. No hidden fees.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="bi bi-lightning-charge text-primary-600 text-xl mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white">Continuous Innovation</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Our techs are continually trained on the latest EV and hybrid systems.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Team Section -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Meet The Team</h2>
+                <p class="text-slate-600 dark:text-slate-400 mt-4">The master minds behind your vehicle's peak performance.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Team 1 -->
+                <div class="bg-slate-50 dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all group cursor-pointer">
+                    <img src="assets/img/team_david.jpg" alt="David Chen" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-slate-900 dark:text-white">David Chen</h4>
+                        <p class="text-primary-600 text-sm font-bold uppercase mt-1 mb-3">Master Diagnostic Tech</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">15 years experience specializing in European electrical systems and software.</p>
+                    </div>
+                </div>
+                <!-- Team 2 -->
+                <div class="bg-slate-50 dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all group cursor-pointer">
+                    <img src="assets/img/team_sarah.jpg" alt="Sarah Jenkins" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-slate-900 dark:text-white">Sarah Jenkins</h4>
+                        <p class="text-primary-600 text-sm font-bold uppercase mt-1 mb-3">Service Advisor</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Your primary contact for transparent quotes, updates, and timelines.</p>
+                    </div>
+                </div>
+                <!-- Team 3 -->
+                <div class="bg-slate-50 dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all group cursor-pointer">
+                    <img src="assets/img/team_mike.jpg" alt="Mike Ross" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-slate-900 dark:text-white">Mike Ross</h4>
+                        <p class="text-primary-600 text-sm font-bold uppercase mt-1 mb-3">Lead Mechanic</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Specialist in heavy engine repair, timing chains, and transmission rebuilds.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Template (Will be applied globally) -->
+    <footer class="bg-slate-50 dark:bg-slate-950 pt-16 pb-8 border-t border-slate-200 dark:border-slate-700">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="index.html" class="flex items-center mb-4 brand-lockup brand-lockup--footer"><img src="assets/img/logo-car-only.png" alt="AutoCare" class="brand-mark"><span class="brand-copy"><span class="brand-name">Auto<span>Care</span></span><small class="brand-tagline">Modern Auto Repair</small></span></a>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">Premium automotive repair and maintenance services you can trust. Driven by excellence.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-primary-600 hover:text-slate-900 dark:hover:text-white transition dark:text-white"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-primary-600 hover:text-slate-900 dark:hover:text-white transition dark:text-white"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="text-primary-600 hover:text-slate-900 dark:hover:text-white transition dark:text-white"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="about.html" class="hover:text-primary-600 transition">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-primary-600 transition">Our Services</a></li>
+                        <li><a href="pricing.html" class="hover:text-primary-600 transition">Pricing</a></li>
+                        <li><a href="blog.html" class="hover:text-primary-600 transition">Latest News</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="contact.html" class="hover:text-primary-600 transition">Contact Us</a></li>
+                        <li><a href="login.html" class="hover:text-primary-600 transition">Customer Portal</a></li>
+                        <li><a href="privacy.html" class="hover:text-primary-600 transition">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="hover:text-primary-600 transition">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Subscribe</h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Get maintenance tips and exclusive offers.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="w-full px-4 py-2 rounded-l-xl border border-slate-200 bg-white dark:bg-slate-700 dark:border-slate-600 text-sm outline-none">
+                        <button type="button" class="bg-slate-900 text-white px-4 py-2 rounded-r-xl text-sm font-bold hover:bg-slate-800 transition">Go</button>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center text-xs text-slate-600 dark:text-slate-500 pt-8 border-t border-slate-200 dark:border-slate-700">
+                &copy; 2026 AutoCare HTML Template. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

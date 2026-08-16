@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home 2 | AutoCare</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="font-sans home-two">
+
+        <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-slate-50/90 dark:bg-slate-950/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 transition-colors duration-300">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="flex justify-between items-center h-28">
+                <a href="index.html" class="flex items-center brand-lockup"><img src="assets/img/logo-car-only.png" alt="AutoCare car mark" class="brand-mark"><span class="brand-copy"><span class="brand-name">Auto<span>Care</span></span><small class="brand-tagline">Modern Auto Repair</small></span></a>
+                
+                <div class="hidden lg:flex items-center space-x-8">
+                    <div class="relative group">
+                        <button type="button" class="nav-home-toggle text-sm font-bold text-slate-900 dark:text-white hover:text-primary-600 transition flex items-center gap-1" aria-label="Choose home page">
+                            Home <i class="bi bi-chevron-down text-[10px]"></i>
+                        </button>
+                        <div class="nav-home-menu absolute top-full left-0 mt-3 w-40 bg-white dark:bg-slate-950 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
+                            <a href="index.html" class="block px-4 py-3 text-sm font-semibold text-slate-600 dark:text-gray-300 hover:bg-slate-50 dark:hover:bg-slate-800">Home 1</a>
+                            <a href="index-2.html" class="block px-4 py-3 text-sm font-semibold text-slate-600 dark:text-gray-300 hover:bg-slate-50 dark:hover:bg-slate-800 border-t border-slate-200 dark:border-slate-700">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">About</a>
+                    <a href="services.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">Services</a>
+                    <a href="pricing.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">Products</a>
+                    <a href="blog.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">Blog</a>
+                    <a href="contact.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">Contact</a>
+                </div>
+                
+                <div class="flex items-center gap-4 lg:gap-6">
+                    <div class="flex items-center gap-4 text-slate-600 dark:text-white text-lg">
+                        <button id="theme-toggle" class="hover:text-slate-900 dark:hover:text-primary-600 transition dark:text-white" title="Toggle Theme">
+                            <i class="bi bi-moon-fill dark:hidden"></i>
+                            <i class="bi bi-sun-fill hidden dark:block"></i>
+                        </button>
+                        <button id="rtl-toggle" class="font-bold text-sm hover:text-slate-900 dark:hover:text-primary-600 transition dark:text-white" title="Toggle RTL">
+                            RTL
+                        </button>
+                    </div>
+                    
+                    <div class="hidden lg:flex items-center gap-3 border-l border-slate-200 dark:border-slate-700 pl-6">
+                        <a href="login.html" class="px-6 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-white text-sm font-bold hover:bg-slate-100 hover:text-slate-900 transition bg-white dark:bg-slate-950">Login</a>
+                        <a href="register.html" class="px-6 py-2 rounded-lg bg-slate-800 text-white text-sm font-bold hover:bg-slate-900 transition">Sign Up</a>
+                    </div>
+
+                    <button id="mobile-menu-btn" class="lg:hidden text-2xl text-slate-900 dark:text-white ml-2">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SaaS/Dashboard Style Hero -->
+    <section class="home-two-hero pt-32 pb-20 overflow-hidden relative">
+        <div class="absolute inset-0 -z-10"></div>
+        <div class="absolute top-0 right-0 -mr-40 -mt-40 w-[600px] h-[600px] bg-primary-500/10 rounded-full blur-3xl -z-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="animate-fade-in">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-slate-900 dark:text-white leading-tight mb-6">
+                        Run Your Auto Repair Shop <span class="text-primary-600">Like a Pro.</span>
+                    </h1>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-lg">
+                        The ultimate management platform for modern auto garages. Track inventory, schedule services, and boost customer retention effortlessly.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="pricing.html" class="btn-primary py-3 px-8 rounded-lg shadow-lg shadow-primary-500/30">Start Free Trial</a>
+                        <a href="#features" class="btn-outline py-3 px-8 rounded-lg">View Features</a>
+                    </div>
+                </div>
+                
+                <!-- Dashboard Mockup Image -->
+                <div class="relative animate-slide-up">
+                    <img src="assets/img/saas-dashboard.jpg" alt="AutoCare service management dashboard" class="home-two-hero__image w-full rounded-2xl shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Widget Section -->
+    <section class="py-20 bg-white dark:bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="section-title text-slate-900 dark:text-white" id="features">Shop Management Made Simple</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <div class="card p-8">
+                    <i class="fa-solid fa-users-gear text-4xl text-primary-600 mb-6"></i>
+                    <h3 class="text-xl font-bold mb-3 dark:text-white">CRM & Booking</h3>
+                    <p class="text-slate-600 dark:text-slate-400">Manage client profiles, vehicle histories, and streamline online appointment scheduling.</p>
+                </div>
+                <div class="card p-8 border-2 border-primary-500 transform md:-translate-y-4">
+                    <i class="fa-solid fa-bars-progress text-4xl text-primary-600 mb-6"></i>
+                    <h3 class="text-xl font-bold mb-3 dark:text-white">Technician Tracking</h3>
+                    <p class="text-slate-600 dark:text-slate-400">Assign jobs to specific bays, track mechanic hours, and monitor live shop efficiency.</p>
+                </div>
+                <div class="card p-8">
+                    <i class="fa-solid fa-file-invoice-dollar text-4xl text-primary-600 mb-6"></i>
+                    <h3 class="text-xl font-bold mb-3 dark:text-white">Automated Invoicing</h3>
+                    <p class="text-slate-600 dark:text-slate-400">Generate professional quotes and invoices instantly with integrated parts pricing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Operations Overview -->
+    <section class="home-two-operations py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <p class="home-two-eyebrow">One connected workshop</p>
+                <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-5">Everything your team needs to keep every bay moving.</h2>
+                <p class="home-two-copy max-w-xl">Bring bookings, technician tasks, customer updates, and payments into one calm workspace designed for busy service teams.</p>
+                <div class="grid grid-cols-3 gap-3 sm:gap-5 mt-9">
+                    <div class="home-two-stat"><strong>95%</strong><span>on-time jobs</span></div>
+                    <div class="home-two-stat"><strong>24/7</strong><span>booking access</span></div>
+                    <div class="home-two-stat"><strong>4.9/5</strong><span>customer rating</span></div>
+                </div>
+            </div>
+            <div class="home-two-flow">
+                <div class="home-two-flow__item"><span>01</span><div><h3>Accept a booking</h3><p>Customers select their service and preferred time online.</p></div><i class="bi bi-calendar2-check"></i></div>
+                <div class="home-two-flow__item"><span>02</span><div><h3>Assign the right technician</h3><p>Balance work across bays and keep everyone informed.</p></div><i class="bi bi-person-gear"></i></div>
+                <div class="home-two-flow__item"><span>03</span><div><h3>Share a clear update</h3><p>Send estimates, approvals, and completion notices instantly.</p></div><i class="bi bi-send-check"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Home 2 CTA -->
+    <section class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="home-two-cta text-center">
+                <p class="home-two-eyebrow">Built for growing garages</p>
+                <h2 class="text-3xl md:text-4xl font-bold mt-3">Spend less time chasing updates.</h2>
+                <p class="mt-4 max-w-2xl mx-auto">Give your customers the clarity they expect and give your team the tools to deliver it.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8">
+                    <a href="register.html" class="btn-primary">Create your free account</a>
+                    <a href="contact.html" class="home-two-cta__link">Talk to our team <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Template (Will be applied globally) -->
+    <footer class="bg-slate-50 dark:bg-slate-950 pt-16 pb-8 border-t border-slate-200 dark:border-slate-700">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="index.html" class="flex items-center mb-4 brand-lockup brand-lockup--footer"><img src="assets/img/logo-car-only.png" alt="AutoCare" class="brand-mark"><span class="brand-copy"><span class="brand-name">Auto<span>Care</span></span><small class="brand-tagline">Modern Auto Repair</small></span></a>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">Premium automotive repair and maintenance services you can trust. Driven by excellence.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-primary-600 hover:text-slate-900 dark:hover:text-white transition dark:text-white"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-primary-600 hover:text-slate-900 dark:hover:text-white transition dark:text-white"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="text-primary-600 hover:text-slate-900 dark:hover:text-white transition dark:text-white"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="about.html" class="hover:text-primary-600 transition">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-primary-600 transition">Our Services</a></li>
+                        <li><a href="pricing.html" class="hover:text-primary-600 transition">Pricing</a></li>
+                        <li><a href="blog.html" class="hover:text-primary-600 transition">Latest News</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="contact.html" class="hover:text-primary-600 transition">Contact Us</a></li>
+                        <li><a href="login.html" class="hover:text-primary-600 transition">Customer Portal</a></li>
+                        <li><a href="privacy.html" class="hover:text-primary-600 transition">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="hover:text-primary-600 transition">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Subscribe</h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Get maintenance tips and exclusive offers.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="w-full px-4 py-2 rounded-l-xl border border-slate-200 bg-white dark:bg-slate-700 dark:border-slate-600 text-sm outline-none">
+                        <button type="button" class="bg-slate-900 text-white px-4 py-2 rounded-r-xl text-sm font-bold hover:bg-slate-800 transition">Go</button>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center text-xs text-slate-600 dark:text-slate-500 pt-8 border-t border-slate-200 dark:border-slate-700">
+                &copy; 2026 AutoCare HTML Template. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

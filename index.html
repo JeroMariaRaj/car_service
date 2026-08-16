@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - AutoCare</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="font-sans">
+        <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-slate-50/90 dark:bg-slate-950/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 transition-colors duration-300">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="flex justify-between items-center h-28">
+                <a href="index.html" class="flex items-center brand-lockup"><img src="assets/img/logo-car-only.png" alt="AutoCare" class="brand-mark"><span class="brand-copy"><span class="brand-name">Auto<span>Care</span></span><small class="brand-tagline">Modern Auto Repair</small></span></a>
+                
+                <div class="hidden lg:flex items-center space-x-8">
+                    <div class="relative group">
+                        <button type="button" class="nav-home-toggle text-sm font-bold text-slate-900 dark:text-white hover:text-primary-600 transition flex items-center gap-1" aria-label="Choose home page">
+                            Home <i class="bi bi-chevron-down text-[10px]"></i>
+                        </button>
+                        <div class="nav-home-menu absolute top-full left-0 mt-3 w-40 bg-white dark:bg-slate-950 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
+                            <a href="index.html" class="block px-4 py-3 text-sm font-semibold text-slate-600 dark:text-gray-300 hover:bg-slate-50 dark:hover:bg-slate-800">Home 1</a>
+                            <a href="index-2.html" class="block px-4 py-3 text-sm font-semibold text-slate-600 dark:text-gray-300 hover:bg-slate-50 dark:hover:bg-slate-800 border-t border-slate-200 dark:border-slate-700">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">About</a>
+                    <a href="services.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">Services</a>
+                    <a href="pricing.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">Products</a>
+                    <a href="blog.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">Blog</a>
+                    <a href="contact.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">Contact</a>
+                </div>
+                
+                <div class="flex items-center gap-4 lg:gap-6">
+                    <div class="flex items-center gap-4 text-slate-600 dark:text-white text-lg">
+                        <button id="theme-toggle" class="hover:text-slate-900 dark:hover:text-primary-600 transition dark:text-white" title="Toggle Theme">
+                            <i class="bi bi-moon-fill dark:hidden"></i>
+                            <i class="bi bi-sun-fill hidden dark:block"></i>
+                        </button>
+                        <button id="rtl-toggle" class="font-bold text-sm hover:text-slate-900 dark:hover:text-primary-600 transition dark:text-white" title="Toggle RTL">
+                            RTL
+                        </button>
+                    </div>
+                    
+                    <div class="hidden lg:flex items-center gap-3 border-l border-slate-200 dark:border-slate-700 pl-6">
+                        <a href="login.html" class="px-6 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-white text-sm font-bold hover:border-[#3E2723] hover:text-slate-900 transition bg-white dark:bg-slate-950">Login</a>
+                        <a href="register.html" class="px-6 py-2 rounded-lg bg-slate-800 text-white text-sm font-bold hover:bg-slate-900 transition">Sign Up</a>
+                    </div>
+
+                    <button id="mobile-menu-btn" class="lg:hidden text-2xl text-slate-900 dark:text-white ml-2">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+<!-- HERO BANNER -->
+    <section class="relative min-h-screen flex items-center pt-20 bg-slate-50 overflow-hidden">
+        <div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-slate-100 rounded-full blur-3xl opacity-60"></div>
+
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="space-y-8">
+                <div class="space-y-4">
+                    <h2 class="text-primary-600 font-semibold tracking-[0.3em] text-sm uppercase">
+                        Premium Car Service
+                    </h2>
+                    <h1 class="text-5xl md:text-7xl font-semibold text-slate-900 leading-tight dark:text-white">
+                        Maintain Your <br> 
+                        <span class="text-primary-600">Dream Ride</span> <br>
+                        With Experts.
+                    </h1>
+                    <p class="text-slate-600 text-lg max-w-lg leading-relaxed dark:text-slate-300">
+                        Book a service, track maintenance in real-time, and let our master technicians handle everything from basic oil changes to complex diagnostics.
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="booking.html" class="btn-primary">
+                        Book Service Now
+                    </a>
+                    <a href="services.html" class="btn-outline">
+                        View Pricing
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(62,39,35,0.2)] border-8 border-white">
+                    <img src="assets/img/hero.jpg" alt="Luxury Garage" class="w-full h-[500px] object-cover">
+                </div>
+
+                <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl flex items-center gap-4 max-w-xs animate-bounce-slow border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
+                    <div class="bg-slate-100 p-3 rounded-lg">
+                        <i class="bi bi-speedometer2 text-slate-900 text-2xl dark:text-white"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-primary-600 font-bold uppercase">Live Diagnostics</p>
+                        <p class="text-sm font-semibold text-slate-900 dark:text-white">Engine Health: Optimal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: The Experience -->
+    <section class="py-24 bg-white dark:bg-slate-800 dark:border-slate-700">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-20">
+                <h2 class="section-title">The Experience</h2>
+                <h3 class="text-4xl font-semibold text-slate-900 dark:text-white">From Breakdown to <br> <span class="italic font-light">Peak Performance</span></h3>
+                <p class="text-slate-600 mt-6 leading-relaxed dark:text-slate-300">
+                    Our digital-first service center analyzes your vehicle's needs, provides transparent pricing, and tracks progress in real-time.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <div class="experience-card p-8 rounded-3xl shadow-sm">
+                    <div class="experience-card__icon w-14 h-14 rounded-2xl flex items-center justify-center mb-8">
+                        <i class="bi bi-calendar-check text-2xl"></i>
+                    </div>
+                    <h4 class="experience-card__title text-xl font-semibold mb-4">1. Book Online</h4>
+                    <p class="experience-card__text text-sm leading-relaxed">
+                        Select your vehicle, choose required services, and pick a convenient time slot directly through our intelligent booking system.
+                    </p>
+                </div>
+
+                <div class="experience-card p-8 rounded-3xl shadow-sm">
+                    <div class="experience-card__icon w-14 h-14 rounded-2xl flex items-center justify-center mb-8">
+                        <i class="bi bi-tools text-2xl"></i>
+                    </div>
+                    <h4 class="experience-card__title text-xl font-semibold mb-4">2. Expert Service</h4>
+                    <p class="experience-card__text text-sm leading-relaxed">
+                        Drop off your car. Our certified master technicians will execute repairs using premium OEM parts and state-of-the-art tools.
+                    </p>
+                </div>
+
+                <div class="experience-card p-8 rounded-3xl shadow-sm">
+                    <div class="experience-card__icon w-14 h-14 rounded-2xl flex items-center justify-center mb-8">
+                        <i class="bi bi-shield-check text-2xl"></i>
+                    </div>
+                    <h4 class="experience-card__title text-xl font-semibold mb-4">3. Track & Drive</h4>
+                    <p class="experience-card__text text-sm leading-relaxed">
+                        Track progress via your dashboard. Pay securely online and drive away with confidence, backed by our 12-month warranty.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-20 p-1 bg-slate-100 rounded-full max-w-lg mx-auto flex items-center justify-between pl-6 border border-white dark:border-slate-700">
+                <span class="text-slate-900 font-medium text-sm dark:text-white">Ready to service your vehicle?</span>
+                <a href="booking.html" class="bg-slate-900 text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-slate-800 transition-all">
+                    Book Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: Target Audience -->
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-20">
+                <h2 class="section-title">Target Audience</h2>
+                <h3 class="text-4xl font-semibold text-slate-900 dark:text-white">Who is AutoCare for?</h3>
+                <p class="text-slate-600 mt-6 leading-relaxed dark:text-slate-300">
+                    Our automotive service center is tailored to fit the exact needs of everyday drivers, fleet managers, and car enthusiasts alike.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Everyday Drivers -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between dark:bg-slate-800 dark:border-slate-700">
+                    <div>
+                        <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center mb-6 text-primary-600">
+                            <i class="bi bi-car-front-fill text-xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold text-slate-900 mb-3 dark:text-white">Everyday Drivers</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 dark:text-slate-300">
+                            Eliminate the guesswork of car maintenance. Get transparent pricing, automated service reminders, and honest diagnostics without the upsell pressure.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-200 pt-4 mt-auto dark:border-slate-700">
+                        <span class="text-xs text-primary-600 uppercase tracking-wider font-bold">Benefit: Transparent & Honest Care</span>
+                    </div>
+                </div>
+
+                <!-- Fleet Managers -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between dark:bg-slate-800 dark:border-slate-700">
+                    <div>
+                        <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center mb-6 text-primary-600">
+                            <i class="bi bi-buildings-fill text-xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold text-slate-900 mb-3 dark:text-white">Fleet Managers</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 dark:text-slate-300">
+                            Keep your business moving. Manage multiple vehicles through a single dashboard, track service histories, and benefit from priority turnaround times.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-200 pt-4 mt-auto dark:border-slate-700">
+                        <span class="text-xs text-primary-600 uppercase tracking-wider font-bold">Benefit: Centralized Fleet Control</span>
+                    </div>
+                </div>
+
+                <!-- Car Enthusiasts -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between dark:bg-slate-800 dark:border-slate-700">
+                    <div>
+                        <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center mb-6 text-primary-600">
+                            <i class="bi bi-lightning-charge-fill text-xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold text-slate-900 mb-3 dark:text-white">Car Enthusiasts</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 dark:text-slate-300">
+                            Trust your performance vehicle to experts. We handle precision alignments, synthetic oil requirements, and complex aftermarket installations.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-200 pt-4 mt-auto dark:border-slate-700">
+                        <span class="text-xs text-primary-600 uppercase tracking-wider font-bold">Benefit: Specialized Performance Care</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <a href="booking.html" class="inline-block bg-slate-900 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-slate-800 transition-all shadow-lg">
+                    Book Your First Visit
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Service Gallery -->
+    <section class="py-16 md:py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-6">
+                <div class="max-w-xl">
+                    <h2 class="text-3xl md:text-4xl font-semibold text-slate-900 dark:text-white">Explore Our <br class="hidden sm:block"> Service Capabilities</h2>
+                </div>
+                <a href="services.html" class="text-slate-900 font-bold border-b-2 border-[#3E2723] pb-1 hover:text-primary-600 hover:border-[#8D6E63] transition-all whitespace-nowrap dark:text-white">
+                    View All Services →
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                <!-- Changed images to use random car/garage images from unsplash for demo -->
+                <div class="relative overflow-hidden rounded-2xl aspect-[4/5] sm:aspect-[3/4] group">
+                    <img src="assets/img/service-engine.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#3E2723]/90 via-[#3E2723]/20 to-transparent flex flex-col justify-end p-6">
+                        <p class="text-white font-bold text-lg">Diagnostics</p>
+                        <p class="text-[#D7CCC8] text-xs">Computerized Scanning</p>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden rounded-2xl aspect-[4/5] sm:aspect-[3/4] group ">
+                    <img src="assets/img/service-oil.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#3E2723]/90 via-[#3E2723]/20 to-transparent flex flex-col justify-end p-6">
+                        <p class="text-white font-bold text-lg">Engine Repair</p>
+                        <p class="text-[#D7CCC8] text-xs">Full Rebuilds</p>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden rounded-2xl aspect-[4/5] sm:aspect-[3/4] group">
+                    <img src="assets/img/service-ac.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#3E2723]/90 via-[#3E2723]/20 to-transparent flex flex-col justify-end p-6">
+                        <p class="text-white font-bold text-lg">Maintenance</p>
+                        <p class="text-[#D7CCC8] text-xs">Fluid & Filters</p>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden rounded-2xl aspect-[4/5] sm:aspect-[3/4] group ">
+                    <img src="assets/img/service-brakes.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#3E2723]/90 via-[#3E2723]/20 to-transparent flex flex-col justify-end p-6">
+                        <p class="text-white font-bold text-lg">Brakes & Tires</p>
+                        <p class="text-[#D7CCC8] text-xs">Safety First</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: The Technical Edge -->
+    <section class="py-24 bg-white overflow-hidden dark:bg-slate-800 dark:border-slate-700">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div class="relative">
+                    <div class="absolute -top-10 -left-10 w-64 h-64 bg-slate-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
+                    <div class="relative bg-slate-900 p-2 rounded-[2rem] shadow-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&q=80&w=1000&h=800" alt="Dashboard Preview" class="rounded-[1.8rem] w-full object-cover h-[400px]">
+                        <div class="absolute top-10 right-6 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 animate-pulse">
+                            <p class="text-[10px] font-bold text-primary-600 uppercase">OBD2 Scanning...</p>
+                            <div class="flex gap-1 mt-1">
+                                <div class="h-1.5 w-12 bg-slate-900 dark:bg-white rounded-full"></div>
+                                <div class="h-1.5 w-4 bg-[#D7CCC8] rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-10">
+                    <div>
+                        <h2 class="section-title">The Technical Edge</h2>
+                        <h3 class="text-4xl font-semibold text-slate-900 dark:text-white">Diagnose smarter, <br> repair faster.</h3>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-slate-900 flex items-center justify-center mt-1">
+                                <i class="bi bi-check2 text-white text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-900 dark:text-white">Advanced OBD2 Scans</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-300">We use dealership-level scanning tools to accurately pinpoint electrical and engine faults instantly.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-slate-900 flex items-center justify-center mt-1">
+                                <i class="bi bi-check2 text-white text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-900 dark:text-white">Digital Inspections</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-300">Receive a digital report on your phone complete with photos and videos of worn parts before approving repairs.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-slate-900 flex items-center justify-center mt-1">
+                                <i class="bi bi-check2 text-white text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-900 dark:text-white">Online Approvals</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-300">Review quotes, approve necessary work, and track the live status of your vehicle directly from our dashboard.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: The Collection (Pricing) -->
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <h2 class="section-title">Maintenance Packages</h2>
+                    <h3 class="text-4xl font-semibold text-slate-900 dark:text-white">Curated for Every <br> Vehicle.</h3>
+                </div>
+                <p class="max-w-xs text-slate-600 text-sm leading-relaxed dark:text-slate-300">
+                    Transparent pricing on our most popular preventative maintenance services.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="group flex flex-col h-full bg-white p-6 rounded-3xl border border-slate-200 hover:border-[#8D6E63] hover:shadow-lg transition-all duration-500 relative cursor-pointer dark:bg-slate-800 dark:border-slate-700" onclick="window.location.href='booking.html'">
+                    <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mb-6 text-slate-900 dark:text-white">
+                        <i class="bi bi-droplet-fill text-2xl"></i>
+                    </div>
+                    <div class="mt-auto">
+                        <h4 class="font-semibold text-slate-900 text-xl mb-1 dark:text-white">$49</h4>
+                        <p class="text-sm font-bold text-slate-900 dark:text-white">Basic Oil Change</p>
+                        <p class="text-xs text-primary-600 mt-2">Up to 5 qts conventional oil, new filter.</p>
+                    </div>
+                    <button class="absolute bottom-6 right-6 w-10 h-10 bg-slate-900 text-white rounded-xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 flex items-center justify-center">
+                        <i class="bi bi-plus-lg text-lg"></i>
+                    </button>
+                </div>
+
+                <div class="group flex flex-col h-full bg-white p-6 rounded-3xl border border-slate-200 hover:border-[#8D6E63] hover:shadow-lg transition-all duration-500 relative cursor-pointer dark:bg-slate-800 dark:border-slate-700" onclick="window.location.href='booking.html'">
+                    <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mb-6 text-slate-900 dark:text-white">
+                        <i class="bi bi-circle-fill text-2xl"></i>
+                    </div>
+                    <div class="mt-auto">
+                        <h4 class="font-semibold text-slate-900 text-xl mb-1 dark:text-white">$89</h4>
+                        <p class="text-sm font-bold text-slate-900 dark:text-white">Synthetic Premium</p>
+                        <p class="text-xs text-primary-600 mt-2">Up to 5 qts synthetic oil, rotation, inspection.</p>
+                    </div>
+                    <button class="absolute bottom-6 right-6 w-10 h-10 bg-slate-900 text-white rounded-xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 flex items-center justify-center">
+                        <i class="bi bi-plus-lg text-lg"></i>
+                    </button>
+                </div>
+
+                <div class="group flex flex-col h-full bg-white p-6 rounded-3xl border border-slate-200 hover:border-[#8D6E63] hover:shadow-lg transition-all duration-500 relative cursor-pointer dark:bg-slate-800 dark:border-slate-700" onclick="window.location.href='booking.html'">
+                    <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mb-6 text-slate-900 dark:text-white">
+                        <i class="bi bi-record-circle text-2xl"></i>
+                    </div>
+                    <div class="mt-auto">
+                        <h4 class="font-semibold text-slate-900 text-xl mb-1 dark:text-white">$149</h4>
+                        <p class="text-sm font-bold text-slate-900 dark:text-white">Brake Pad Swap</p>
+                        <p class="text-xs text-primary-600 mt-2">Per axle. Premium ceramic pads installed.</p>
+                    </div>
+                    <button class="absolute bottom-6 right-6 w-10 h-10 bg-slate-900 text-white rounded-xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 flex items-center justify-center">
+                        <i class="bi bi-plus-lg text-lg"></i>
+                    </button>
+                </div>
+
+                <div class="group flex flex-col h-full bg-white p-6 rounded-3xl border border-slate-200 hover:border-[#8D6E63] hover:shadow-lg transition-all duration-500 relative cursor-pointer dark:bg-slate-800 dark:border-slate-700" onclick="window.location.href='booking.html'">
+                    <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mb-6 text-slate-900 dark:text-white">
+                        <i class="bi bi-search text-2xl"></i>
+                    </div>
+                    <div class="mt-auto">
+                        <h4 class="font-semibold text-slate-900 text-xl mb-1 dark:text-white">$99</h4>
+                        <p class="text-sm font-bold text-slate-900 dark:text-white">Diagnostics</p>
+                        <p class="text-xs text-primary-600 mt-2">Check engine light scanning and root cause.</p>
+                    </div>
+                    <button class="absolute bottom-6 right-6 w-10 h-10 bg-slate-900 text-white rounded-xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 flex items-center justify-center">
+                        <i class="bi bi-plus-lg text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: Testimonials -->
+    <section class="py-24 bg-white dark:bg-slate-800 dark:border-slate-700">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h3 class="text-3xl font-semibold text-slate-900 dark:text-white">Trusted by Demanding Drivers</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="group bg-slate-50 p-8 rounded-3xl shadow-sm border border-slate-200 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:border-[#8D6E63] dark:border-slate-700">
+                    <div class="mb-6">
+                        <i class="bi bi-quote text-4xl text-[#EFEBE9] group-hover:text-[#D7CCC8] transition-colors"></i>
+                        <p class="text-slate-600 italic mt-2 dark:text-slate-300">"AutoCare saved me from a massive dealership bill. They showed me exactly what needed fixing with photos, and nothing more."</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sarah Jenkins" class="testimonial-avatar w-12 h-12 rounded-full object-cover border-2 border-transparent" loading="lazy">
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm dark:text-white">Sarah Jenkins</p>
+                            <p class="text-primary-600 text-xs uppercase font-bold tracking-wider">Toyota Owner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group bg-slate-50 p-8 rounded-3xl shadow-sm border border-slate-200 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:border-[#8D6E63] dark:border-slate-700">
+                    <div class="mb-6">
+                        <i class="bi bi-quote text-4xl text-[#EFEBE9] group-hover:text-[#D7CCC8] transition-colors"></i>
+                        <p class="text-slate-600 italic mt-2 dark:text-slate-300">"Booking online is a breeze. I drop my car off, track it on the dashboard, and pick it up. No phone tags, no surprises."</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Ross" class="testimonial-avatar w-12 h-12 rounded-full object-cover border-2 border-transparent" loading="lazy">
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm dark:text-white">Michael Ross</p>
+                            <p class="text-primary-600 text-xs uppercase font-bold tracking-wider">Fleet Manager</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group bg-slate-50 p-8 rounded-3xl shadow-sm border border-slate-200 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:border-[#8D6E63] dark:border-slate-700">
+                    <div class="mb-6">
+                        <i class="bi bi-quote text-4xl text-[#EFEBE9] group-hover:text-[#D7CCC8] transition-colors"></i>
+                        <p class="text-slate-600 italic mt-2 dark:text-slate-300">"Finally, mechanics that treat my M3 with the respect it deserves. Master tech Michael is a genius with German cars."</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Elena Rodriguez" class="testimonial-avatar w-12 h-12 rounded-full object-cover border-2 border-transparent" loading="lazy">
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm dark:text-white">Elena Rodriguez</p>
+                            <p class="text-primary-600 text-xs uppercase font-bold tracking-wider">BMW Enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: CTA -->
+    <section class="py-20">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="bg-slate-900 rounded-[3rem] p-12 text-center text-white relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10 pointer-events-none">
+                    <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle,white_1px,transparent_1px)] [background-size:20px_20px]"></div>
+                </div>
+
+                <h2 class="text-4xl font-semibold mb-6 relative z-10">Stop Wondering. Start Driving.</h2>
+                <p class="text-[#D7CCC8] mb-10 max-w-xl mx-auto relative z-10">Join 10,000+ drivers who have transformed their vehicle maintenance experience with AutoCare.</p>
+                
+                <div class="relative z-10">
+                    <a href="booking.html" class="inline-block bg-slate-50 text-slate-900 px-10 py-3 rounded-xl font-bold hover:bg-slate-100 transition-all transform hover:scale-105 shadow-xl dark:text-white">
+                        Book Your Service Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Template (Will be applied globally) -->
+    <footer class="bg-slate-50 dark:bg-slate-950 pt-16 pb-8 border-t border-slate-200 dark:border-slate-700">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="index.html" class="flex items-center mb-4 brand-lockup brand-lockup--footer"><img src="assets/img/logo-car-only.png" alt="AutoCare" class="brand-mark"><span class="brand-copy"><span class="brand-name">Auto<span>Care</span></span><small class="brand-tagline">Modern Auto Repair</small></span></a>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">Premium automotive repair and maintenance services you can trust. Driven by excellence.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-primary-600 hover:text-slate-900 dark:hover:text-white transition dark:text-white"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-primary-600 hover:text-slate-900 dark:hover:text-white transition dark:text-white"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="text-primary-600 hover:text-slate-900 dark:hover:text-white transition dark:text-white"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="about.html" class="hover:text-primary-600 transition">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-primary-600 transition">Our Services</a></li>
+                        <li><a href="pricing.html" class="hover:text-primary-600 transition">Pricing</a></li>
+                        <li><a href="blog.html" class="hover:text-primary-600 transition">Latest News</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="contact.html" class="hover:text-primary-600 transition">Contact Us</a></li>
+                        <li><a href="login.html" class="hover:text-primary-600 transition">Customer Portal</a></li>
+                        <li><a href="privacy.html" class="hover:text-primary-600 transition">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="hover:text-primary-600 transition">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Subscribe</h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Get maintenance tips and exclusive offers.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="w-full px-4 py-2 rounded-l-xl border border-slate-200 bg-white dark:bg-slate-700 dark:border-slate-600 text-sm outline-none">
+                        <button type="button" class="bg-slate-900 text-white px-4 py-2 rounded-r-xl text-sm font-bold hover:bg-slate-800 transition">Go</button>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center text-xs text-slate-600 dark:text-slate-500 pt-8 border-t border-slate-200 dark:border-slate-700">
+                &copy; 2026 AutoCare HTML Template. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
