@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
@@ -57,9 +57,14 @@
     <div class="flex-1 flex flex-col overflow-hidden relative">
         <!-- Topbar -->
         <header class="h-20 bg-white dark:bg-dark-bg border-b border-gray-200 dark:border-dark-border flex items-center justify-between px-6">
-            <h2 class="text-xl font-bold font-display text-slate-900 dark:text-white">Customer Portal</h2>
+            <div class="flex items-center gap-3">
+                <button id="customer-mobile-menu-btn" class="md:hidden w-10 h-10 rounded-full flex items-center justify-center bg-slate-100 hover:bg-gray-200 dark:bg-slate-800 dark:hover:bg-gray-700 text-slate-500 hover:text-primary-600 dark:text-slate-400 transition">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <h2 class="text-xl font-bold font-display text-slate-900 dark:text-white">Customer Portal</h2>
+            </div>
             <div class="flex items-center gap-4">
-                <button id="theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-100 hover:bg-gray-200 dark:bg-slate-800 dark:hover:bg-gray-700 text-slate-500 hover:text-primary-600 dark:text-slate-400 transition">
+                                <button id="theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-100 hover:bg-gray-200 dark:bg-slate-800 dark:hover:bg-gray-700 text-slate-500 hover:text-primary-600 dark:text-slate-400 transition">
                     <i class="fa-solid fa-moon dark:hidden"></i>
                     <i class="fa-solid fa-sun hidden dark:block"></i>
                 </button>
@@ -70,8 +75,36 @@
                     <img src="https://ui-avatars.com/api/?name=John+Doe&background=14b8a6&color=fff" alt="User">
                 </a>
             </div>
-        </header>
+                </header>
 
+        <!-- Mobile Menu (Vertical Dropdown) -->
+        <div id="customer-mobile-menu" class="hidden md:hidden fixed top-20 left-0 w-full bg-white dark:bg-dark-bg border-b border-gray-200 dark:border-dark-border z-50 shadow-xl overflow-y-auto" style="max-height: calc(100vh - 5rem);">
+            <nav class="flex flex-col py-2 px-4 space-y-1">
+                <a href="dashboard.html" class="flex items-center px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-dark-border dark:hover:text-white transition font-medium">
+                    <i class="fa-solid fa-grid-2 mr-3 w-5 text-center"></i> Dashboard
+                </a>
+                <a href="vehicles.html" class="flex items-center px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-dark-border dark:hover:text-white transition font-medium">
+                    <i class="fa-solid fa-car mr-3 w-5 text-center"></i> My Vehicles
+                </a>
+                <a href="service-history.html" class="flex items-center px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-dark-border dark:hover:text-white transition font-medium">
+                    <i class="fa-solid fa-clock-rotate-left mr-3 w-5 text-center"></i> Service History
+                </a>
+                <a href="maintenance.html" class="flex items-center px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-dark-border dark:hover:text-white transition font-medium">
+                    <i class="fa-solid fa-wrench mr-3 w-5 text-center"></i> Maintenance
+                </a>
+                <a href="tracking.html" class="flex items-center px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-dark-border dark:hover:text-white transition font-medium">
+                    <i class="fa-solid fa-location-crosshairs mr-3 w-5 text-center"></i> Vehicle Tracking
+                </a>
+                <a href="profile.html" class="flex items-center px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-dark-border dark:hover:text-white transition font-medium">
+                    <i class="fa-solid fa-user mr-3 w-5 text-center"></i> My Profile
+                </a>
+                        </nav>
+            <div class="border-t border-gray-200 dark:border-dark-border p-4 flex flex-col gap-2">
+                <a href="../login.html" class="flex items-center px-4 py-3 rounded-lg text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20 transition font-medium">
+                    <i class="fa-solid fa-right-from-bracket mr-3 w-5 text-center"></i> Logout
+                </a>
+            </div>
+        </div>
         <main class="flex-1 overflow-y-auto p-6 bg-slate-50 dark:bg-dark-bg">
             <div class="card p-6 max-w-4xl mx-auto">
                 <div class="flex justify-between items-center mb-8">
@@ -139,6 +172,36 @@
                     </div>
                 \`;
                 container.innerHTML += html;
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileBtn = document.getElementById('customer-mobile-menu-btn');
+            const mobileMenu = document.getElementById('customer-mobile-menu');
+            if (mobileBtn && mobileMenu) {
+                mobileBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    const mainContent = document.querySelector('main');
+                    if(mainContent) mainContent.classList.toggle('overflow-hidden');
+                    const icon = mobileBtn.querySelector('i');
+                    if (mobileMenu.classList.contains('hidden')) {
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    } else {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-xmark');
+                    }
+                });
+            }
+            
+            // Highlight active menu items
+            const currentPath = window.location.pathname.split('/').pop() || 'dashboard.html';
+            document.querySelectorAll('#customer-mobile-menu a').forEach(a => {
+                if (a.getAttribute('href') === currentPath) {
+                    a.classList.add('bg-primary-50', 'text-primary-600', 'dark:bg-primary-900/20', 'dark:text-primary-400');
+                    a.classList.remove('text-slate-600', 'hover:bg-slate-50', 'dark:text-slate-400', 'dark:hover:bg-dark-border', 'dark:hover:text-white');
+                }
             });
         });
     </script>
