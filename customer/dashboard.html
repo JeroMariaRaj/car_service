@@ -282,7 +282,7 @@
                         <td class="px-4 py-3">
                             <span class="px-2 py-1 text-xs font-semibold rounded-full ${statusColor}">${b.status}</span>
                         </td>
-                        <td class="px-4 py-3 text-right">
+                                                                        <td class="px-4 py-3 text-right whitespace-nowrap">
                             <button onclick="viewBooking('${b.id}')" class="text-slate-500 hover:text-primary-600 transition p-1" title="View"><i class="fa-solid fa-eye"></i></button>
                             <a href="../booking.html?edit=${b.id}" class="text-slate-500 hover:text-blue-600 transition p-1 ml-1" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
                             <button onclick="cancelBooking('${b.id}')" class="text-slate-500 hover:text-red-600 transition p-1 ml-1" title="Cancel/Delete"><i class="fa-solid fa-trash-can"></i></button>
@@ -353,9 +353,7 @@
         function closeViewModal() {
             document.getElementById('viewBookingModal').classList.add('hidden');
             document.getElementById('viewBookingModal').classList.remove('flex');
-        }
-
-        function cancelBooking(id) {
+        }        function cancelBooking(id) {
             if(confirm("Are you sure you want to cancel and delete this booking?")) {
                 CustomerData.deleteBooking(id);
                 renderDashboard();
