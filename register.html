@@ -13,16 +13,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="antialiased font-sans bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-dark-bg dark:text-dark-heading flex items-center justify-center min-h-screen relative overflow-hidden">
-    <!-- Top Right Toggles -->
-    <div class="absolute top-6 right-6 z-50 flex items-center gap-4">
-        <button id="theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-500 hover:text-primary-600 dark:text-slate-400 transition">
-            <i class="fa-solid fa-moon dark:hidden"></i>
-            <i class="fa-solid fa-sun hidden dark:block"></i>
-        </button>
-        <button id="rtl-toggle" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-xs font-bold text-slate-500 hover:text-primary-600 dark:text-slate-400 transition">
-            RTL
-        </button>
-    </div>
+
 
     <div class="absolute -top-40 -right-40 w-96 h-96 bg-primary-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-10 animate-pulse-soft"></div>
 
@@ -56,7 +47,15 @@
             </div>
         </div>
         
+        <!-- Quick Toggles for Demo -->
         <div class="flex justify-center gap-4 mt-8">
+            <button id="theme-toggle" class="p-2 rounded-full bg-white dark:bg-dark-card shadow text-slate-500 hover:text-primary-600 transition">
+                <i class="fa-solid fa-moon dark:hidden"></i>
+                <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
+            </button>
+            <button id="rtl-toggle" class="px-3 py-1 rounded-full bg-white dark:bg-dark-card shadow text-xs font-bold text-slate-500 hover:text-primary-600 transition">
+                RTL
+            </button>
             <a href="index.html" class="p-2 rounded-full bg-white dark:bg-dark-card shadow text-slate-500 hover:text-primary-600 transition">
                 <i class="fa-solid fa-house"></i>
             </a>

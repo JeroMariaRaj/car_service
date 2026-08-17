@@ -62,7 +62,80 @@ function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     if (menu) {
         menu.classList.toggle('hidden');
+        const isOpen = !menu.classList.contains('hidden');
+        const button = document.getElementById('mobile-menu-btn');
+        if (button) {
+            button.setAttribute('aria-expanded', String(isOpen));
+            button.querySelector('i')?.classList.toggle('bi-list', !isOpen);
+            button.querySelector('i')?.classList.toggle('bi-x-lg', isOpen);
+        }
     }
+}
+
+function addMobileMenuIfMissing() {
+    const menuButton = document.getElementById('mobile-menu-btn');
+    const publicNav = document.querySelector('nav.fixed');
+
+    // Portal pages use their own responsive navigation; marketing pages share this menu.
+    if (!menuButton || !publicNav || document.getElementById('mobile-menu')) return;
+
+    const menu = document.createElement('div');
+    menu.id = 'mobile-menu';
+    menu.className = 'hidden lg:hidden fixed top-[5.5rem] inset-x-0 bottom-0 z-[100] overflow-y-auto border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 p-4 shadow-2xl';
+    menu.innerHTML = `
+        <div class="space-y-2">
+            <a href="index.html" class="px-3 py-2 text-base font-bold text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-900 rounded-lg">Home</a>
+            <a href="about.html" class="px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">About</a>
+            <a href="services.html" class="px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">Services</a>
+            <a href="pricing.html" class="px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">Products</a>
+            <a href="blog.html" class="px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">Blog</a>
+            <a href="contact.html" class="px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">Contact</a>
+            <div class="border-t border-slate-200 dark:border-slate-700 mt-4 pt-4 flex flex-col gap-3">
+                <a href="login.html" class="justify-center px-3 py-2 text-base font-bold text-slate-600 dark:text-white border border-slate-200 dark:border-slate-700 rounded-lg">Login</a>
+                <a href="register.html" class="justify-center px-3 py-2 text-base font-bold text-white bg-slate-800 rounded-lg">Sign Up</a>
+            </div>
+        </div>`;
+
+    publicNav.appendChild(menu);
+}
+
+function prepareMobileMenuOverlay() {
+    const menu = document.getElementById('mobile-menu');
+    if (!menu) return;
+
+    // Keep the sheet outside the fixed header. This prevents page sections with
+    // their own stacking layers from appearing above the menu or blocking links.
+    if (menu.parentElement !== document.body) document.body.appendChild(menu);
+
+    Object.assign(menu.style, {
+        position: 'fixed',
+        top: '5.5rem',
+        right: '0',
+        bottom: '0',
+        left: '0',
+        zIndex: '9999',
+        overflowY: 'auto',
+        padding: '1rem 1.25rem 2rem',
+        backgroundColor: 'var(--surface)',
+        borderTop: '1px solid var(--line)',
+        boxShadow: '0 18px 35px rgba(22, 32, 51, .12)'
+    });
+
+    const menuContent = menu.firstElementChild;
+    if (menuContent) {
+        Object.assign(menuContent.style, {
+            width: '100%',
+            maxWidth: '19.4rem',
+            margin: '1.5rem auto 0',
+            padding: '0'
+        });
+    }
+
+    menu.querySelectorAll('a').forEach(link => {
+        link.style.minHeight = '3.15rem';
+        link.style.display = 'flex';
+        link.style.alignItems = 'center';
+    });
 }
 
 // Initialize everything on load
@@ -97,6 +170,8 @@ window.showCustomAlert = function(title, message, isSuccess = true) {
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     initRTL();
+    addMobileMenuIfMissing();
+    prepareMobileMenuOverlay();
     
     // Add event listeners for toggles if they exist
     const themeBtns = document.querySelectorAll('#theme-toggle');
@@ -108,8 +183,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenuCloseBtn = document.getElementById('mobile-menu-close');
     
-    if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    if (mobileMenuBtn) {
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    }
     if (mobileMenuCloseBtn) mobileMenuCloseBtn.addEventListener('click', toggleMobileMenu);
+
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            if (menu && !menu.classList.contains('hidden')) toggleMobileMenu();
+        });
+    });
 
     // Global Footer Interactions (Social & Subscribe)
     const facebookIcons = document.querySelectorAll('footer .bi-facebook');
