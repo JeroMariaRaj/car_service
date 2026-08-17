@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maintenance Reminders | AutoCare</title>
+    <title>Recent Updates | AutoCare</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
 </head>
 <body class="antialiased font-sans bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-dark-bg dark:text-dark-heading flex h-screen overflow-hidden">
 
-            <!-- Sidebar -->
+    <!-- Sidebar -->
     <aside class="w-64 bg-white dark:bg-dark-card border-r border-gray-200 dark:border-dark-border flex flex-col hidden md:flex">
         <div class="h-20 flex items-center px-6 border-b border-gray-200 dark:border-dark-border">
             <a href="../index.html" class="flex items-center brand-lockup"><img src="../assets/img/logo-car-only.png" alt="AutoCare car mark" class="brand-mark"><span class="brand-copy"><span class="brand-name">Auto<span>Care</span></span><small class="brand-tagline">Modern Auto Repair</small></span></a>
@@ -26,14 +26,16 @@
             <a href="dashboard.html" class="flex items-center px-3 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-dark-border dark:hover:text-white transition font-medium">
                 <i class="fa-solid fa-grid-2 mr-3 w-5 text-center"></i> Dashboard
             </a>
-
-            <a href="vehicles.html" class="flex items-center px-3 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-dark-border dark:hover:text-white transition font-medium">
-                <i class="fa-solid fa-car mr-3 w-5 text-center"></i> My Vehicles
+            <a href="packages.html" class="flex items-center px-3 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-dark-border dark:hover:text-white transition font-medium">
+                <i class="fa-solid fa-box mr-3 w-5 text-center"></i> My Packages
+            </a>
+            <a href="recent-updates.html" class="flex items-center px-3 py-2.5 rounded-lg bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400 font-medium">
+                <i class="fa-solid fa-bell mr-3 w-5 text-center"></i> Recent Updates
             </a>
             <a href="service-history.html" class="flex items-center px-3 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-dark-border dark:hover:text-white transition font-medium">
                 <i class="fa-solid fa-clock-rotate-left mr-3 w-5 text-center"></i> Service History
             </a>
-            <a href="maintenance.html" class="flex items-center px-3 py-2.5 rounded-lg bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400 font-medium">
+            <a href="maintenance.html" class="flex items-center px-3 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-dark-border dark:hover:text-white transition font-medium">
                 <i class="fa-solid fa-wrench mr-3 w-5 text-center"></i> Maintenance
             </a>
             <a href="tracking.html" class="flex items-center px-3 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-dark-border dark:hover:text-white transition font-medium">
@@ -71,8 +73,14 @@
         </header>
 
         <main class="flex-1 overflow-y-auto p-6 bg-slate-50 dark:bg-dark-bg">
-            <div id="remindersContainer" class="max-w-4xl mx-auto space-y-6">
-                <!-- Populated dynamically by JS -->
+            <div class="card p-6 max-w-4xl mx-auto">
+                <div class="flex justify-between items-center mb-8">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Recent Updates</h3>
+                </div>
+                
+                <div class="space-y-6" id="updatesContainer">
+                    <!-- Populated by JS -->
+                </div>
             </div>
         </main>
     </div>
@@ -81,76 +89,57 @@
     <script src="../assets/js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const container = document.getElementById('remindersContainer');
-            const vehicles = CustomerData.getVehicles();
+            const bookings = CustomerData.getBookings();
+            const history = CustomerData.getServiceHistory();
+            const container = document.getElementById('updatesContainer');
             
-            container.innerHTML = '';
+            // Combine and sort by date (simulated)
+            let combined = [];
+            bookings.forEach(b => {
+                combined.push({
+                    id: b.id,
+                    title: 'Service Booking Updates',
+                    desc: \`Your booking for \${b.service} on \${b.date} is currently \${b.status}.\`,
+                    date: b.date,
+                    icon: 'fa-calendar-check',
+                    color: 'text-blue-600 bg-blue-100 dark:bg-blue-900/30'
+                });
+            });
             
-            if(vehicles.length === 0) {
-                container.innerHTML = `
-                    <div class="text-center py-12 text-slate-500 dark:text-slate-400">
-                        <i class="fa-solid fa-wrench text-4xl mb-3 text-gray-300 dark:text-slate-600"></i>
-                        <p>No vehicles found. Add a vehicle to see maintenance reminders.</p>
-                        <a href="vehicles.html" class="btn-primary inline-block mt-4 py-2 px-4">Add Vehicle</a>
-                    </div>
-                `;
+            history.forEach(h => {
+                combined.push({
+                    id: h.id,
+                    title: 'Service Completed',
+                    desc: \`Service \${h.service} was successfully completed. Amount paid: $\${h.amount.toFixed(2)}\`,
+                    date: h.date,
+                    icon: 'fa-check-circle',
+                    color: 'text-green-600 bg-green-100 dark:bg-green-900/30'
+                });
+            });
+            
+            if(combined.length === 0) {
+                container.innerHTML = '<p class="text-slate-500 text-center py-8">No recent updates available.</p>';
                 return;
             }
-
-            // Generate mock reminders for the first two vehicles if they exist
-            if(vehicles.length > 0) {
-                const v = vehicles[0];
-                container.innerHTML += `
-                    <div class="card p-6 border-l-4 border-red-500 flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-red-50 dark:bg-red-900/20 text-red-600 flex items-center justify-center text-xl">
-                                <i class="fa-solid fa-oil-can"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-slate-900 dark:text-white">Oil Change Overdue</h3>
-                                <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">${v.make} ${v.model} (${v.regNumber}) • Overdue by 250 miles</p>
-                            </div>
-                        </div>
-                        <a href="../booking.html" class="btn-primary py-2 px-4 text-sm bg-red-600 hover:bg-red-700">Book Now</a>
-                    </div>
-                `;
-            }
-
-            if(vehicles.length > 1) {
-                const v2 = vehicles[1];
-                container.innerHTML += `
-                    <div class="card p-6 border-l-4 border-yellow-500 flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-yellow-50 dark:bg-yellow-900/20 text-yellow-600 flex items-center justify-center text-xl">
-                                <i class="fa-solid fa-car-battery"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-slate-900 dark:text-white">Battery Check</h3>
-                                <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">${v2.make} ${v2.model} (${v2.regNumber}) • Due in 45 days</p>
-                            </div>
-                        </div>
-                        <a href="../booking.html" class="btn-outline py-2 px-4 text-sm">Schedule</a>
-                    </div>
-                `;
-            }
             
-            // Generic reminder for all other vehicles
-            for(let i = 2; i < vehicles.length; i++) {
-                const v = vehicles[i];
-                container.innerHTML += `
-                    <div class="card p-6 border-l-4 border-blue-500 flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 flex items-center justify-center text-xl">
-                                <i class="fa-solid fa-gauge"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-slate-900 dark:text-white">General Inspection</h3>
-                                <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">${v.make} ${v.model} (${v.regNumber}) • Good standing</p>
-                            </div>
+            // Dummy sort
+            combined.reverse();
+            
+            combined.forEach(update => {
+                const html = \`
+                    <div class="flex gap-4 items-start p-4 border border-slate-100 dark:border-dark-border rounded-xl bg-white dark:bg-dark-card hover:shadow-md transition">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 \${update.color}">
+                            <i class="fa-solid \${update.icon} text-lg"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-slate-900 dark:text-white text-lg">\${update.title}</h4>
+                            <p class="text-slate-600 dark:text-slate-400 mt-1">\${update.desc}</p>
+                            <span class="text-xs text-slate-400 font-medium mt-2 block"><i class="fa-regular fa-clock mr-1"></i> \${update.date}</span>
                         </div>
                     </div>
-                `;
-            }
+                \`;
+                container.innerHTML += html;
+            });
         });
     </script>
 </body>

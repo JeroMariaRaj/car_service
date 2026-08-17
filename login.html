@@ -14,7 +14,7 @@
     <script src="assets/js/tailwind-config.js"></script>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="antialiased font-sans bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-dark-bg dark:text-dark-heading flex items-center justify-center min-h-screen relative overflow-hidden">
+<body class="antialiased font-sans bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-dark-bg dark:text-dark-heading flex items-center justify-center min-h-screen py-8 relative overflow-y-auto overflow-x-hidden">
 
     <!-- Background Decoration -->
     <div class="absolute -top-40 -right-40 w-96 h-96 bg-primary-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-10 animate-pulse-soft"></div>
@@ -37,7 +37,7 @@
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <i class="fa-solid fa-envelope text-slate-400"></i>
                         </div>
-                        <input type="email" id="email" class="input-field pl-10" placeholder="admin@autocare.com or user@autocare.com" required>
+                        <input type="email" id="email" class="input-field pl-10" placeholder="user@autocare.com" required>
                     </div>
                 </div>
                 
@@ -65,13 +65,32 @@
                 </div>
 
                 <div class="p-3 bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 text-xs rounded-lg border border-blue-100 dark:border-blue-900/30">
-                    <strong>Demo Logins:</strong><br>
-                    Admin: admin@autocare.com<br>
-                    Customer: Any other email
+                    <strong>Demo Login:</strong><br>
+                    Customer: Any email address
                 </div>
 
                 <button type="submit" class="btn-primary w-full">Sign In</button>
             </form>
+            
+            <div class="mt-6">
+                <div class="relative">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-slate-200 dark:border-slate-700"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-white/90 dark:bg-dark-card/90 text-slate-500">Or continue with</span>
+                    </div>
+                </div>
+
+                <div class="mt-6 grid grid-cols-2 gap-3">
+                    <button type="button" class="w-full inline-flex justify-center py-2 px-4 border border-slate-200 dark:border-slate-700 rounded-lg shadow-sm bg-white dark:bg-dark-card text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                        <i class="fa-brands fa-google text-red-500 mr-2 mt-0.5"></i> Google
+                    </button>
+                    <button type="button" class="w-full inline-flex justify-center py-2 px-4 border border-slate-200 dark:border-slate-700 rounded-lg shadow-sm bg-white dark:bg-dark-card text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                        <i class="fa-brands fa-apple text-slate-900 dark:text-white mr-2 mt-0.5"></i> Apple
+                    </button>
+                </div>
+            </div>
             
             <div class="mt-6 text-center text-sm text-slate-600 dark:text-slate-400">
                 Don't have an account? <a href="register.html" class="text-primary-600 font-medium hover:text-primary-700">Register here</a>
@@ -111,13 +130,7 @@
 
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const email = document.getElementById('email').value;
-            
-            if (email === 'admin@autocare.com') {
-                window.location.href = 'admin/dashboard.html';
-            } else {
-                window.location.href = 'customer/dashboard.html';
-            }
+            window.location.href = 'customer/dashboard.html';
         });
     </script>
 </body>

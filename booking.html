@@ -129,6 +129,10 @@
                                     <option value="oil">Oil Change - $49</option>
                                     <option value="brake">Brake Repair - $89</option>
                                     <option value="diagnostic">Engine Diagnostics - $99</option>
+                                    <option value="tire">Tire Rotation - $39</option>
+                                    <option value="battery">Battery Replacement - $129</option>
+                                    <option value="ac">A/C Service - $79</option>
+                                    <option value="transmission">Transmission Service - $149</option>
                                 </select>
                             </div>
                             <div>
@@ -210,19 +214,49 @@
             // Generate Booking ID
             const bookingId = 'BKG-' + Math.floor(Math.random() * 10000);
             
+            const serviceSelect = document.getElementById('serviceType');
+            const serviceVal = serviceSelect.value;
+            let price = 0;
+            let serviceName = "Unknown";
+            if(serviceVal === 'oil') { price = 49; serviceName = "Oil Change"; }
+            if(serviceVal === 'brake') { price = 89; serviceName = "Brake Repair"; }
+            if(serviceVal === 'diagnostic') { price = 99; serviceName = "Engine Diagnostics"; }
+            if(serviceVal === 'tire') { price = 39; serviceName = "Tire Rotation"; }
+            if(serviceVal === 'battery') { price = 129; serviceName = "Battery Replacement"; }
+            if(serviceVal === 'ac') { price = 79; serviceName = "A/C Service"; }
+            if(serviceVal === 'transmission') { price = 149; serviceName = "Transmission Service"; }
+            
             const booking = {
                 id: bookingId,
                 regNumber: document.getElementById('regNumber').value,
-                service: document.getElementById('serviceType').value,
+                service: serviceName,
                 date: document.getElementById('bookingDate').value,
                 time: document.getElementById('bookingTime').value,
-                status: 'Pending'
+                status: 'Pending',
+                grandTotal: price
             };
             
             // Store in LocalStorage
             let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
             bookings.push(booking);
             localStorage.setItem('bookings', JSON.stringify(bookings));
+
+            // Sync Vehicle to "My Vehicles"
+            const regNum = document.getElementById('regNumber').value;
+            if (regNum) {
+                let vehicles = JSON.parse(localStorage.getItem('my_vehicles')) || [];
+                if (!vehicles.find(v => v.regNumber === regNum)) {
+                    vehicles.push({
+                        id: 'v' + Math.floor(Math.random() * 10000),
+                        make: 'Unknown Make',
+                        model: 'Unknown Model',
+                        year: new Date().getFullYear(),
+                        regNumber: regNum,
+                        mileage: 0
+                    });
+                    localStorage.setItem('my_vehicles', JSON.stringify(vehicles));
+                }
+            }
             
             // Show beautiful custom modal
             document.getElementById('modalBookingId').textContent = bookingId;

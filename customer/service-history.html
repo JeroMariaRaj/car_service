@@ -26,6 +26,7 @@
             <a href="dashboard.html" class="flex items-center px-3 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-dark-border dark:hover:text-white transition font-medium">
                 <i class="fa-solid fa-grid-2 mr-3 w-5 text-center"></i> Dashboard
             </a>
+
             <a href="vehicles.html" class="flex items-center px-3 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-dark-border dark:hover:text-white transition font-medium">
                 <i class="fa-solid fa-car mr-3 w-5 text-center"></i> My Vehicles
             </a>
@@ -74,7 +75,7 @@
                 <div class="flex justify-between items-center mb-6">
                     <h3 class="text-lg font-bold text-slate-900 dark:text-white">Past Services</h3>
                     <div class="flex gap-2">
-                        <input type="text" class="input-field py-1.5 px-3 text-sm" placeholder="Search...">
+                        <input type="text" id="searchInput" class="input-field py-1.5 px-3 text-sm" placeholder="Search...">
                         <button class="btn-outline py-1.5 px-3 text-sm"><i class="fa-solid fa-filter"></i></button>
                     </div>
                 </div>
@@ -92,34 +93,8 @@
                                 <th scope="col" class="px-4 py-3 text-right">Invoice</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <!-- Demo completed items -->
-                            <tr class="border-b dark:border-dark-border hover:bg-slate-50 dark:hover:bg-dark-border/50">
-                                <td class="px-4 py-3 font-medium text-slate-900 dark:text-white">BKG-9128</td>
-                                <td class="px-4 py-3">ABC-1234</td>
-                                <td class="px-4 py-3">Brake Repair</td>
-                                <td class="px-4 py-3">2026-07-15</td>
-                                <td class="px-4 py-3">$189.00</td>
-                                <td class="px-4 py-3">
-                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Completed</span>
-                                </td>
-                                <td class="px-4 py-3 text-right">
-                                    <button class="text-primary-600 hover:text-primary-700" onclick="alert('Downloading invoice PDF...')"><i class="fa-solid fa-file-pdf"></i></button>
-                                </td>
-                            </tr>
-                            <tr class="border-b dark:border-dark-border hover:bg-slate-50 dark:hover:bg-dark-border/50">
-                                <td class="px-4 py-3 font-medium text-slate-900 dark:text-white">BKG-4451</td>
-                                <td class="px-4 py-3">ABC-1234</td>
-                                <td class="px-4 py-3">Oil Change</td>
-                                <td class="px-4 py-3">2026-03-10</td>
-                                <td class="px-4 py-3">$49.00</td>
-                                <td class="px-4 py-3">
-                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Completed</span>
-                                </td>
-                                <td class="px-4 py-3 text-right">
-                                    <button class="text-primary-600 hover:text-primary-700" onclick="alert('Downloading invoice PDF...')"><i class="fa-solid fa-file-pdf"></i></button>
-                                </td>
-                            </tr>
+                        <tbody id="historyTableBody">
+                            <!-- Populated by JS -->
                         </tbody>
                     </table>
                 </div>
@@ -127,6 +102,61 @@
         </main>
     </div>
 
+    <script src="../assets/js/customer-data.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const history = CustomerData.getServiceHistory();
+            const tbody = document.getElementById('historyTableBody');
+            
+            function renderHistory(data) {
+                tbody.innerHTML = '';
+                if(data.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="7" class="px-4 py-8 text-center text-slate-500">No past services found.</td></tr>`;
+                    return;
+                }
+                
+                data.forEach(item => {
+                    const statusColor = item.status === 'Completed' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800';
+                    const tr = document.createElement('tr');
+                    tr.className = 'border-b dark:border-dark-border hover:bg-slate-50 dark:hover:bg-dark-border/50';
+                    
+                    let vehicleDisplay = item.regNumber;
+                    const v = CustomerData.getVehicleByReg(item.regNumber);
+                    if(v) vehicleDisplay = `${v.make} ${v.model} (${item.regNumber})`;
+
+                    tr.innerHTML = `
+                        <td class="px-4 py-3 font-medium text-slate-900 dark:text-white">${item.id}</td>
+                        <td class="px-4 py-3">${vehicleDisplay}</td>
+                        <td class="px-4 py-3">${item.service}</td>
+                        <td class="px-4 py-3">${item.date}</td>
+                        <td class="px-4 py-3">$${item.amount.toFixed(2)}</td>
+                        <td class="px-4 py-3">
+                            <span class="px-2 py-1 text-xs font-semibold rounded-full ${statusColor}">${item.status}</span>
+                        </td>
+                        <td class="px-4 py-3 text-right">
+                            <button class="text-primary-600 hover:text-primary-700" onclick="showCustomAlert('Invoice Download', 'Your invoice is being downloaded.', true)"><i class="fa-solid fa-file-pdf"></i></button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
+            
+            renderHistory(history);
+
+            // Filter logic
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                const filtered = history.filter(item => 
+                    item.id.toLowerCase().includes(term) ||
+                    item.service.toLowerCase().includes(term) ||
+                    item.regNumber.toLowerCase().includes(term)
+                );
+                renderHistory(filtered);
+            });
+        });
+    </script>
 </body>
 </html>
+

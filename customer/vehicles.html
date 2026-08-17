@@ -26,6 +26,7 @@
             <a href="dashboard.html" class="flex items-center px-3 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-dark-border dark:hover:text-white transition font-medium">
                 <i class="fa-solid fa-grid-2 mr-3 w-5 text-center"></i> Dashboard
             </a>
+
             <a href="vehicles.html" class="flex items-center px-3 py-2.5 rounded-lg bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400 font-medium">
                 <i class="fa-solid fa-car mr-3 w-5 text-center"></i> My Vehicles
             </a>
@@ -92,13 +93,20 @@
                 </div>
                 <form id="vehicleForm" onsubmit="handleVehicleSubmit(event)" class="p-6 space-y-4">
                     <input type="hidden" id="vehicleId">
+                    
+                    <div id="formImagePreview" class="w-full h-32 bg-gray-100 dark:bg-slate-800 rounded-xl overflow-hidden hidden flex items-center justify-center bg-cover bg-center border border-gray-200 dark:border-slate-700 transition-all duration-300 relative">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                            <span class="text-white text-sm font-semibold backdrop-blur-md px-3 py-1 bg-black/30 rounded-full border border-white/20"><i class="fa-solid fa-sparkles mr-1"></i> Auto-Generated Image</span>
+                        </div>
+                    </div>
+
                     <div>
                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Make</label>
-                        <input type="text" id="vMake" required class="input-field py-2 px-3" placeholder="e.g. BMW">
+                        <input type="text" id="vMake" required class="input-field py-2 px-3" placeholder="e.g. BMW" oninput="updateFormPreview()">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Model</label>
-                        <input type="text" id="vModel" required class="input-field py-2 px-3" placeholder="e.g. M3">
+                        <input type="text" id="vModel" required class="input-field py-2 px-3" placeholder="e.g. M3" oninput="updateFormPreview()">
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div>
@@ -121,26 +129,34 @@
                 </form>
             </div>
         </div>
+
+        <!-- Vehicle Image Modal -->
+        <div id="imageModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[60] hidden flex items-center justify-center transition-opacity opacity-0">
+            <div class="w-full max-w-2xl mx-4 relative transform scale-95 transition-transform" id="imageModalContent">
+                <button type="button" onclick="closeImageModal()" class="absolute -top-12 right-0 text-white hover:text-gray-300 transition">
+                    <i class="fa-solid fa-xmark text-3xl"></i>
+                </button>
+                <div class="bg-slate-900 rounded-2xl overflow-hidden shadow-2xl relative min-h-[300px] flex items-center justify-center">
+                    <div id="imageLoading" class="absolute inset-0 flex flex-col items-center justify-center text-white">
+                        <i class="fa-solid fa-circle-notch fa-spin text-4xl mb-4 text-primary-500"></i>
+                        <p>Loading vehicle image...</p>
+                    </div>
+                    <img id="vehicleDisplayImg" src="" alt="Vehicle Preview" class="w-full h-auto object-cover hidden" onload="this.classList.remove('hidden'); document.getElementById('imageLoading').classList.add('hidden');">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white">
+                        <h3 id="imageModalTitle" class="text-2xl font-bold font-display">Vehicle Preview</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <script src="../assets/js/customer-data.js"></script>
     <script src="../assets/js/main.js"></script>
     <script>
-        // Initial Mock Data if localStorage is empty
-        const defaultVehicles = [
-            { id: Date.now().toString(), make: 'BMW', model: 'M3', year: 2021, mileage: 24500, reg: 'ABC-1234' },
-            { id: (Date.now() + 1).toString(), make: 'Audi', model: 'Q7', year: 2023, mileage: 12000, reg: 'XYZ-9876' }
-        ];
 
-        // Initialize vehicles in localStorage
-        function initVehicles() {
-            if (!localStorage.getItem('userVehicles')) {
-                localStorage.setItem('userVehicles', JSON.stringify(defaultVehicles));
-            }
-        }
-
-        // Get vehicles from localStorage
+        // Get vehicles from CustomerData
         function getVehicles() {
-            return JSON.parse(localStorage.getItem('userVehicles')) || [];
+            return CustomerData.getVehicles();
         }
 
         // Render vehicles grid
@@ -161,11 +177,17 @@
             }
 
             vehicles.forEach(v => {
+                // Generate company related image as requested
+                const imageUrl = `../assets/img/cars/company_car.jpg`;
+
                 grid.innerHTML += `
-                    <div class="card p-0 overflow-hidden group">
-                        <div class="h-32 bg-gray-200 dark:bg-dark-border relative flex items-center justify-center">
-                            <i class="fa-solid fa-car-side text-5xl text-slate-400 dark:text-slate-500 transition-transform duration-500 group-hover:scale-110"></i>
-                            <button onclick="deleteVehicle('${v.id}')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-sm hover:bg-red-200" title="Delete">
+                    <div class="card p-0 overflow-hidden group shadow-md hover:shadow-lg transition-shadow">
+                        <div class="h-40 bg-gray-200 dark:bg-dark-border relative flex items-center justify-center cursor-pointer overflow-hidden bg-cover bg-center" style="background-image: url('${imageUrl}');" onclick="showVehicleImage('${v.make}', '${v.model}')">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm z-10">
+                                <span class="text-white font-semibold text-sm bg-black/60 px-3 py-1 rounded-full backdrop-blur-md border border-white/20"><i class="fa-solid fa-expand mr-1"></i> View Full Image</span>
+                            </div>
+                            <button onclick="event.stopPropagation(); deleteVehicle('${v.id}')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 dark:bg-slate-800/90 text-red-600 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-sm hover:bg-red-50 dark:hover:bg-slate-700 z-20" title="Delete">
                                 <i class="fa-solid fa-trash text-xs"></i>
                             </button>
                         </div>
@@ -173,7 +195,7 @@
                             <div class="flex justify-between items-start mb-4">
                                 <div>
                                     <h4 class="text-xl font-bold text-slate-900 dark:text-white">${v.make} ${v.model}</h4>
-                                    <p class="text-sm text-slate-500 dark:text-slate-400 font-mono">${v.reg} • ${v.year}</p>
+                                    <p class="text-sm text-slate-500 dark:text-slate-400 font-mono">${v.regNumber} • ${v.year}</p>
                                 </div>
                                 <span class="px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full">Active</span>
                             </div>
@@ -198,12 +220,35 @@
         }
 
         // Modal Controls
+        let previewTimeout;
+        function updateFormPreview() {
+            const make = document.getElementById('vMake').value;
+            const model = document.getElementById('vModel').value;
+            const preview = document.getElementById('formImagePreview');
+            
+            clearTimeout(previewTimeout);
+            
+            if (make.length > 1 && model.length > 0) {
+                previewTimeout = setTimeout(() => {
+                    const query = encodeURIComponent(`${make} ${model} car`);
+                    preview.style.backgroundImage = `url('https://loremflickr.com/400/300/${query}')`;
+                    preview.classList.remove('hidden');
+                }, 800); // Debounce typing
+            } else {
+                preview.classList.add('hidden');
+                preview.style.backgroundImage = 'none';
+            }
+        }
+
         function openVehicleModal(id = null) {
             const modal = document.getElementById('vehicleModal');
             const form = document.getElementById('vehicleForm');
             const title = document.getElementById('modalTitle');
+            const preview = document.getElementById('formImagePreview');
             
             form.reset();
+            preview.classList.add('hidden');
+            preview.style.backgroundImage = 'none';
             
             if (id) {
                 title.textContent = 'Edit Vehicle';
@@ -214,7 +259,8 @@
                     document.getElementById('vModel').value = vehicle.model;
                     document.getElementById('vYear').value = vehicle.year;
                     document.getElementById('vMileage').value = vehicle.mileage;
-                    document.getElementById('vReg').value = vehicle.reg;
+                    document.getElementById('vReg').value = vehicle.regNumber;
+                    updateFormPreview(); // Show existing image
                 }
             } else {
                 title.textContent = 'Add Vehicle';
@@ -228,6 +274,44 @@
             document.getElementById('vehicleModal').classList.add('hidden');
         }
 
+        // Image Modal Controls
+        function showVehicleImage(make, model) {
+            const modal = document.getElementById('imageModal');
+            const content = document.getElementById('imageModalContent');
+            const title = document.getElementById('imageModalTitle');
+            const img = document.getElementById('vehicleDisplayImg');
+            const loader = document.getElementById('imageLoading');
+
+            title.textContent = `${make} ${model}`;
+            
+            // Reset image state
+            img.classList.add('hidden');
+            loader.classList.remove('hidden');
+            img.src = '';
+            
+            // Generate a random seed based on the car make/model so it stays consistent per car during the session, but is effectively random
+            const query = encodeURIComponent(`${make} ${model} car`);
+            img.src = `https://loremflickr.com/800/600/${query}?random=1`;
+            
+            // Show modal with animation
+            modal.classList.remove('hidden');
+            void modal.offsetWidth; // Reflow
+            modal.classList.remove('opacity-0');
+            content.classList.remove('scale-95');
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            const content = document.getElementById('imageModalContent');
+            
+            modal.classList.add('opacity-0');
+            content.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
         // CRUD Operations
         function handleVehicleSubmit(e) {
             e.preventDefault();
@@ -239,7 +323,7 @@
                 model: document.getElementById('vModel').value,
                 year: document.getElementById('vYear').value,
                 mileage: document.getElementById('vMileage').value,
-                reg: document.getElementById('vReg').value.toUpperCase()
+                regNumber: document.getElementById('vReg').value.toUpperCase()
             };
             
             let vehicles = getVehicles();
@@ -252,7 +336,7 @@
                 vehicles.push(newVehicle);
             }
             
-            localStorage.setItem('userVehicles', JSON.stringify(vehicles));
+            CustomerData.saveVehicles(vehicles);
             closeVehicleModal();
             renderVehicles();
         }
@@ -261,16 +345,16 @@
             if (confirm('Are you sure you want to delete this vehicle?')) {
                 let vehicles = getVehicles();
                 vehicles = vehicles.filter(v => v.id !== id);
-                localStorage.setItem('userVehicles', JSON.stringify(vehicles));
+                CustomerData.saveVehicles(vehicles);
                 renderVehicles();
             }
         }
 
         // Initialize on load
         document.addEventListener('DOMContentLoaded', () => {
-            initVehicles();
             renderVehicles();
         });
     </script>
 </body>
 </html>
+

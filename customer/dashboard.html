@@ -26,6 +26,7 @@
             <a href="dashboard.html" class="flex items-center px-3 py-2.5 rounded-lg bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400 font-medium">
                 <i class="fa-solid fa-grid-2 mr-3 w-5 text-center"></i> Dashboard
             </a>
+
             <a href="vehicles.html" class="flex items-center px-3 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-dark-border dark:hover:text-white transition font-medium">
                 <i class="fa-solid fa-car mr-3 w-5 text-center"></i> My Vehicles
             </a>
@@ -75,19 +76,19 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
                 <div class="card p-6 border-l-4 border-primary-500">
                     <div class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Active Vehicles</div>
-                    <div class="text-3xl font-bold text-slate-900 dark:text-white">2</div>
+                    <div class="text-3xl font-bold text-slate-900 dark:text-white" id="stat-vehicles">0</div>
                 </div>
                 <div class="card p-6 border-l-4 border-yellow-500">
                     <div class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Upcoming Services</div>
-                    <div class="text-3xl font-bold text-slate-900 dark:text-white">1</div>
+                    <div class="text-3xl font-bold text-slate-900 dark:text-white" id="stat-upcoming">0</div>
                 </div>
                 <div class="card p-6 border-l-4 border-green-500">
                     <div class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Completed Services</div>
-                    <div class="text-3xl font-bold text-slate-900 dark:text-white">4</div>
+                    <div class="text-3xl font-bold text-slate-900 dark:text-white" id="stat-completed">0</div>
                 </div>
                 <div class="card p-6 border-l-4 border-blue-500">
                     <div class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Total Spent</div>
-                    <div class="text-3xl font-bold text-slate-900 dark:text-white">$845</div>
+                    <div class="text-3xl font-bold text-slate-900 dark:text-white" id="stat-spent">$0</div>
                 </div>
             </div>
 
@@ -103,11 +104,12 @@
                         <table class="w-full text-sm text-left text-slate-500 dark:text-slate-400">
                             <thead class="text-xs text-gray-700 uppercase bg-slate-50 dark:bg-dark-border dark:text-slate-400">
                                 <tr>
-                                    <th scope="col" class="px-4 py-3">ID</th>
-                                    <th scope="col" class="px-4 py-3">Vehicle</th>
-                                    <th scope="col" class="px-4 py-3">Service</th>
-                                    <th scope="col" class="px-4 py-3">Date</th>
-                                    <th scope="col" class="px-4 py-3">Status</th>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">ID</th>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Vehicle</th>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Date</th>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Total</th>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-4 text-right text-xs font-bold text-slate-500 uppercase tracking-wider">Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="bookingsTableBody">
@@ -124,60 +126,210 @@
                 <div class="card p-6">
                     <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-6">Maintenance Reminders</h3>
                     
-                    <div class="space-y-4">
-                        <div class="flex items-start gap-4 p-4 rounded-lg bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30">
-                            <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 flex-shrink-0">
-                                <i class="fa-solid fa-oil-can"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Oil Change Due</h4>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">BMW M3 - Overdue by 200 miles</p>
-                                <a href="../booking.html" class="text-red-600 text-xs font-bold mt-2 inline-block">Book Now</a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-50 dark:bg-dark-border/50 border border-slate-200 dark:border-dark-border">
-                            <div class="w-10 h-10 rounded-full bg-gray-200 dark:bg-dark-card flex items-center justify-center text-slate-600 dark:text-slate-400 flex-shrink-0">
-                                <i class="fa-solid fa-car-battery"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Battery Check</h4>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Audi Q7 - Due in 45 days</p>
-                            </div>
-                        </div>
+                    <div class="space-y-4" id="maintenanceReminders">
+                        <!-- Populated by JS -->
                     </div>
                 </div>
             </div>
         </main>
     </div>
 
+    <!-- View Booking Modal -->
+    <div id="viewBookingModal" class="fixed inset-0 bg-black/50 z-[100] hidden flex-col items-center justify-center p-4">
+        <div class="bg-white dark:bg-dark-card rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+            <div class="flex justify-between items-center p-6 border-b border-gray-200 dark:border-dark-border sticky top-0 bg-white dark:bg-dark-card z-10">
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Booking Details</h3>
+                <button onclick="closeViewModal()" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <div class="p-6 space-y-6" id="modalContent">
+                <!-- Injected via JS -->
+            </div>
+            <div class="p-6 border-t border-gray-200 dark:border-dark-border flex justify-end gap-3 sticky bottom-0 bg-white dark:bg-dark-card z-10">
+                <button class="btn-outline" onclick="closeViewModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/customer-data.js"></script>
     <script src="../assets/js/main.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+        // Repeats existing records for the dashboard preview only. The source
+        // arrays in localStorage are never changed by this function.
+        function duplicateForDashboard(records, minimum) {
+            if (!records.length) return [];
+
+            const displayRecords = records.map(record => ({ ...record }));
+            let duplicateNumber = 1;
+
+            while (displayRecords.length < minimum) {
+                const original = records[(displayRecords.length - records.length) % records.length];
+                displayRecords.push({
+                    ...original,
+                    displayId: `${original.id}-copy-${duplicateNumber++}`,
+                    isDashboardCopy: true
+                });
+            }
+
+            return displayRecords;
+        }
+
+        function renderDashboard() {
+            const actualVehicles = CustomerData.getVehicles();
+            const actualBookings = CustomerData.getBookings();
+            const actualHistory = CustomerData.getServiceHistory();
+            const displayVehicles = duplicateForDashboard(actualVehicles, 3);
+            const displayBookings = duplicateForDashboard(actualBookings, 5);
+            const displayHistory = duplicateForDashboard(actualHistory, 5);
+
+            document.getElementById('stat-vehicles').textContent = displayVehicles.length;
+            document.getElementById('stat-upcoming').textContent = displayBookings.length;
+            document.getElementById('stat-completed').textContent = displayHistory.length;
+
+            const totalSpent = displayHistory.reduce((sum, record) => sum + Number(record.amount || 0), 0);
+            document.getElementById('stat-spent').textContent = `$${totalSpent.toFixed(2)}`;
+
+            renderBookingsTable(displayBookings);
+            renderMaintenanceReminders(displayVehicles);
+        }
+
+        function renderMaintenanceReminders(vehicles) {
+            const remindersContainer = document.getElementById('maintenanceReminders');
+
+            if (!vehicles.length) {
+                remindersContainer.innerHTML = '<p class="text-sm text-gray-500">Add a vehicle to see reminders.</p>';
+                return;
+            }
+
+            const firstVehicle = vehicles[0];
+            const secondVehicle = vehicles[1] || firstVehicle;
+            remindersContainer.innerHTML = `
+                <div class="flex items-start gap-4 p-4 rounded-lg bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30">
+                    <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 flex-shrink-0"><i class="fa-solid fa-oil-can"></i></div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-sm">Oil Change Due</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">${firstVehicle.make} ${firstVehicle.model} - Overdue by 200 miles</p>
+                        <a href="../booking.html" class="text-red-600 text-xs font-bold mt-2 inline-block">Book Now</a>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-50 dark:bg-dark-border/50 border border-slate-200 dark:border-dark-border">
+                    <div class="w-10 h-10 rounded-full bg-gray-200 dark:bg-dark-card flex items-center justify-center text-slate-600 dark:text-slate-400 flex-shrink-0"><i class="fa-solid fa-car-battery"></i></div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-sm">Battery Check</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">${secondVehicle.make} ${secondVehicle.model} - Due in 45 days</p>
+                    </div>
+                </div>`;
+        }
+
+        function renderBookingsTable(bookingsToRender) {
+            const bookings = bookingsToRender || CustomerData.getBookings();
             const tbody = document.getElementById('bookingsTableBody');
             const noMsg = document.getElementById('noBookingsMsg');
+            
+            tbody.innerHTML = '';
             
             if (bookings.length === 0) {
                 noMsg.classList.remove('hidden');
             } else {
+                noMsg.classList.add('hidden');
                 bookings.forEach(b => {
-                    const statusColor = b.status === 'Pending' ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800';
+                    const statusColor = b.status === 'Confirmed' ? 'bg-green-100 text-green-800' : (b.status === 'In Service' ? 'bg-blue-100 text-blue-800' : 'bg-yellow-100 text-yellow-800');
                     const tr = document.createElement('tr');
                     tr.className = 'border-b dark:border-dark-border hover:bg-slate-50 dark:hover:bg-dark-border/50';
+                    
+                    let vehicleDisplay = b.vehicleDetails ? `${b.vehicleDetails.make} ${b.vehicleDetails.model} (${b.vehicleDetails.regNumber})` : (b.regNumber || '-');
+                    let dateDisplay = b.appointmentDetails ? `${b.appointmentDetails.date} ${b.appointmentDetails.time}` : (b.date + ' ' + (b.time || ''));
+                    let totalDisplay = b.grandTotal !== undefined ? '$' + b.grandTotal : '-';
+
                     tr.innerHTML = `
-                        <td class="px-4 py-3 font-medium text-slate-900 dark:text-white">${b.id}</td>
-                        <td class="px-4 py-3">${b.regNumber}</td>
-                        <td class="px-4 py-3 capitalize">${b.service}</td>
-                        <td class="px-4 py-3">${b.date} ${b.time}</td>
+                        <td class="px-4 py-3 font-medium text-slate-900 dark:text-white">${b.displayId || b.id}</td>
+                        <td class="px-4 py-3">${vehicleDisplay}</td>
+                        <td class="px-4 py-3">${dateDisplay}</td>
+                        <td class="px-4 py-3 font-bold">${totalDisplay}</td>
                         <td class="px-4 py-3">
                             <span class="px-2 py-1 text-xs font-semibold rounded-full ${statusColor}">${b.status}</span>
+                        </td>
+                        <td class="px-4 py-3 text-right">
+                            <button onclick="viewBooking('${b.id}')" class="text-slate-500 hover:text-primary-600 transition p-1" title="View"><i class="fa-solid fa-eye"></i></button>
+                            <a href="../booking.html?edit=${b.id}" class="text-slate-500 hover:text-blue-600 transition p-1 ml-1" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <button onclick="cancelBooking('${b.id}')" class="text-slate-500 hover:text-red-600 transition p-1 ml-1" title="Cancel/Delete"><i class="fa-solid fa-trash-can"></i></button>
                         </td>
                     `;
                     tbody.appendChild(tr);
                 });
             }
-        });
+        }
+
+        function viewBooking(id) {
+            const bookings = CustomerData.getBookings();
+            const b = bookings.find(x => x.id === id);
+            if(!b) return;
+
+            const content = document.getElementById('modalContent');
+            
+            // Generate addons html
+            let addonsHtml = '<div class="text-sm text-slate-500 italic">None selected</div>';
+            if (b.selectedAddons && b.selectedAddons.length > 0) {
+                addonsHtml = b.selectedAddons.map(a => `<div class="flex justify-between text-sm"><span>+ ${a.name}</span><span>$${a.price}</span></div>`).join('');
+            }
+
+            content.innerHTML = `
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Customer</h4>
+                        <div class="text-sm text-slate-900 dark:text-white space-y-1">
+                            <div><i class="fa-solid fa-user text-gray-400 mr-2 w-4"></i> ${b.customerDetails?.name || '-'}</div>
+                            <div><i class="fa-solid fa-envelope text-gray-400 mr-2 w-4"></i> ${b.customerDetails?.email || '-'}</div>
+                            <div><i class="fa-solid fa-phone text-gray-400 mr-2 w-4"></i> ${b.customerDetails?.phone || '-'}</div>
+                            <div><i class="fa-solid fa-location-dot text-gray-400 mr-2 w-4"></i> ${b.customerDetails?.address || '-'}, ${b.customerDetails?.city || ''}</div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Vehicle</h4>
+                        <div class="text-sm text-slate-900 dark:text-white space-y-1">
+                            <div><i class="fa-solid fa-car text-gray-400 mr-2 w-4"></i> ${b.vehicleDetails?.make || ''} ${b.vehicleDetails?.model || ''} (${b.vehicleDetails?.year || ''})</div>
+                            <div><i class="fa-solid fa-id-card text-gray-400 mr-2 w-4"></i> Reg: ${b.vehicleDetails?.regNumber || b.regNumber || '-'}</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr class="border-gray-200 dark:border-dark-border">
+
+                <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-lg">
+                    <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4">Order Summary</h4>
+                    <div class="space-y-3">
+                        <div class="flex justify-between text-sm font-medium text-slate-900 dark:text-white border-b border-gray-200 dark:border-slate-700 pb-2">
+                            <span>${b.packageName || b.service}</span>
+                            <span>$${b.packagePrice !== undefined ? b.packagePrice : '-'}</span>
+                        </div>
+                        <div class="space-y-1 pb-2 border-b border-gray-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
+                            ${addonsHtml}
+                        </div>
+                        <div class="flex justify-between text-lg font-bold text-slate-900 dark:text-white pt-1">
+                            <span>Total Paid</span>
+                            <span class="text-primary-600">$${b.grandTotal !== undefined ? b.grandTotal : '-'}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('viewBookingModal').classList.remove('hidden');
+            document.getElementById('viewBookingModal').classList.add('flex');
+        }
+
+        function closeViewModal() {
+            document.getElementById('viewBookingModal').classList.add('hidden');
+            document.getElementById('viewBookingModal').classList.remove('flex');
+        }
+
+        function cancelBooking(id) {
+            if(confirm("Are you sure you want to cancel and delete this booking?")) {
+                CustomerData.deleteBooking(id);
+                renderDashboard();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', renderDashboard);
     </script>
 </body>
 </html>
+
