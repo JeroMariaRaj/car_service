@@ -84,7 +84,11 @@ function addMobileMenuIfMissing() {
     menu.className = 'hidden lg:hidden fixed top-[5.5rem] inset-x-0 bottom-0 z-[100] overflow-y-auto border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 p-4 shadow-2xl';
     menu.innerHTML = `
         <div class="space-y-2">
-            <a href="index.html" class="px-3 py-2 text-base font-bold text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-900 rounded-lg">Home</a>
+            <div class="space-y-1">
+                <div class="px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 flex items-center min-h-[3.15rem]">Home</div>
+                <a href="index.html" class="pl-8 pr-3 py-2 text-sm font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">Home 1</a>
+                <a href="index-2.html" class="pl-8 pr-3 py-2 text-sm font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">Home 2</a>
+            </div>
             <a href="about.html" class="px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">About</a>
             <a href="services.html" class="px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">Services</a>
             <a href="pricing.html" class="px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">Products</a>
@@ -195,6 +199,19 @@ document.addEventListener('DOMContentLoaded', () => {
             if (menu && !menu.classList.contains('hidden')) toggleMobileMenu();
         });
     });
+
+    const mobileHomeToggle = document.getElementById('mobile-home-toggle');
+    const mobileHomeDropdown = document.getElementById('mobile-home-dropdown');
+    if (mobileHomeToggle && mobileHomeDropdown) {
+        mobileHomeToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileHomeDropdown.classList.toggle('hidden');
+            const icon = mobileHomeToggle.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('rotate-180');
+            }
+        });
+    }
 
     // Global Footer Interactions (Social & Subscribe)
     const facebookIcons = document.querySelectorAll('footer .bi-facebook');
