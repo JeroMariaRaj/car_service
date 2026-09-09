@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Details | AutoCare</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="font-sans">
+
+        <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-700 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-28">
+                <a href="index.html" class="flex items-center brand-lockup"><img src="assets/img/logo-car-only.png" alt="AutoCare car mark" class="brand-mark"><span class="brand-copy"><span class="brand-name">Auto<span>Care</span></span><small class="brand-tagline">Modern Auto Repair</small></span></a>
+                
+                <div class="hidden lg:flex items-center gap-8">
+                    <div class="relative group">
+                        <button class="flex items-center gap-1 text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">
+                            Home <i class="bi bi-chevron-down text-[10px]"></i>
+                        </button>
+                        <div class="nav-home-menu absolute top-full left-0 mt-3 w-40 bg-white dark:bg-slate-950 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
+                            <a href="index.html" class="block px-4 py-3 text-sm font-semibold text-slate-600 dark:text-gray-300 hover:bg-slate-50 dark:hover:bg-slate-800">Home 1</a>
+                            <a href="index-2.html" class="block px-4 py-3 text-sm font-semibold text-slate-600 dark:text-gray-300 hover:bg-slate-50 dark:hover:bg-slate-800 border-t border-slate-200 dark:border-slate-700">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">About</a>
+                    <a href="services.html" class="text-sm font-bold text-slate-900 dark:text-white hover:text-primary-600 transition">Services</a>
+                    <a href="pricing.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">Pricings</a>
+                    <a href="blog.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">Blog</a>
+                    <a href="contact.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">Contact</a>
+                </div>
+                
+                <div class="flex items-center gap-4 lg:gap-6">
+                    <div class="flex items-center gap-4 text-slate-600 dark:text-white text-lg">
+                        <button id="theme-toggle" class="hover:text-slate-900 dark:hover:text-primary-600 transition dark:text-white" title="Toggle Theme">
+                            <i class="bi bi-moon-fill dark:hidden"></i>
+                            <i class="bi bi-sun-fill hidden dark:block"></i>
+                        </button>
+                        <button id="rtl-toggle" class="font-bold text-sm hover:text-slate-900 dark:hover:text-primary-600 transition dark:text-white" title="Toggle RTL">
+                            RTL
+                        </button>
+                    </div>
+                    
+                    <div class="hidden lg:flex items-center gap-3">
+                        <a href="login.html" class="px-6 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-white text-sm font-bold hover:bg-slate-100 hover:text-slate-900 transition bg-white dark:bg-slate-950">Login</a>
+                        <a href="register.html" class="px-6 py-2 rounded-lg bg-slate-800 text-white text-sm font-bold hover:bg-slate-900 transition">Sign Up</a>
+                    </div>
+
+                    <button id="mobile-menu-btn" class="lg:hidden text-2xl text-slate-900 dark:text-white ml-2">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-8 bg-slate-50 dark:bg-slate-950 text-center border-b border-slate-200 dark:border-slate-700">
+        <div class="max-w-3xl mx-auto px-6">
+            <h1 class="text-4xl font-bold text-slate-900 dark:text-white mb-4">Brake Inspection & Repair</h1>
+            <p class="text-primary-600 text-lg font-bold">From $49.00 | Est. 45 Mins</p>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="pt-8 pb-20 bg-white dark:bg-slate-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div class="lg:col-span-2">
+                    <img src="assets/img/service-brakes.jpg" class="service-detail-image w-full rounded-3xl mb-8 shadow-lg border border-slate-200 dark:border-slate-700 object-cover" alt="Technician repairing a brake caliper and rotor">
+                    
+                                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Service Overview</h2>
+                    <p class="text-slate-600 dark:text-gray-300 mb-6 leading-relaxed">
+                        Your brakes are the most critical safety system on your vehicle. We provide comprehensive brake inspections, pad replacements, and rotor resurfacing to ensure optimal stopping power. Don't wait until you hear a grinding noise to get your brakes checked.
+                    </p>
+                    
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4 mt-8">What's Included</h3>
+                    <ul class="space-y-3 mb-12">
+                        <li class="flex items-center text-slate-600 dark:text-gray-300"><i class="bi bi-check-circle-fill text-primary-600 mr-3"></i> Premium ceramic brake pads</li>
+                        <li class="flex items-center text-slate-600 dark:text-gray-300"><i class="bi bi-check-circle-fill text-primary-600 mr-3"></i> Rotor inspection and resurfacing</li>
+                        <li class="flex items-center text-slate-600 dark:text-gray-300"><i class="bi bi-check-circle-fill text-primary-600 mr-3"></i> Brake fluid top-off</li>
+                        <li class="flex items-center text-slate-600 dark:text-gray-300"><i class="bi bi-check-circle-fill text-primary-600 mr-3"></i> Comprehensive brake system inspection</li>
+                    </ul>
+
+                    <!-- Pricing Table -->
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Pricing Options</h3>
+                    <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-700 mb-12">
+                        <table class="w-full text-left border-collapse min-w-[600px]">
+                            <thead>
+                                <tr class="bg-slate-50 dark:bg-slate-700">
+                                    <th class="py-4 px-6 font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700">Package</th>
+                                    <th class="py-4 px-6 font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700">Description</th>
+                                    <th class="py-4 px-6 font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 text-right">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-[#111] transition">
+                                    <td class="py-4 px-6 font-semibold text-slate-600 dark:text-gray-300">Standard Pad Swap</td>
+                                    <td class="py-4 px-6 text-slate-600 dark:text-slate-400 text-sm">Ceramic pads for one axle.</td>
+                                    <td class="py-4 px-6 font-bold text-slate-900 dark:text-white text-right">$149.99</td>
+                                </tr>
+                                <tr class="border-b border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-[#111] transition">
+                                    <td class="py-4 px-6 font-semibold text-slate-600 dark:text-gray-300">Pads & Rotors</td>
+                                    <td class="py-4 px-6 text-slate-600 dark:text-slate-400 text-sm">New pads and replacement rotors for one axle.</td>
+                                    <td class="py-4 px-6 font-bold text-slate-900 dark:text-white text-right">$299.99</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 dark:hover:bg-[#111] transition">
+                                    <td class="py-4 px-6 font-semibold text-slate-600 dark:text-gray-300">Full Brake Service</td>
+                                    <td class="py-4 px-6 text-slate-600 dark:text-slate-400 text-sm">Pads, rotors, and fluid flush.</td>
+                                    <td class="py-4 px-6 font-bold text-slate-900 dark:text-white text-right">$399.99</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- FAQs -->
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Frequently Asked Questions</h3>
+                    <div class="space-y-4">
+                        <div class="border border-slate-200 dark:border-slate-700 rounded-2xl p-6 hover:border-[#8D6E63] transition cursor-pointer">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-2">How do I know if my brakes need replacing?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Common signs include squeaking or grinding noises, a soft brake pedal, or steering wheel vibrations when stopping.</p>
+                        </div>
+                        <div class="border border-slate-200 dark:border-slate-700 rounded-2xl p-6 hover:border-[#8D6E63] transition cursor-pointer">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-2">How long do brake pads last?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Typically between 30,000 and 70,000 miles depending on your driving habits and environment.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-3xl p-8 sticky top-24 shadow-sm hover:shadow-xl transition-all">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Book this Service</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">Select your preferred date and time to lock in your appointment.</p>
+                        <a href="booking.html" class="inline-block px-8 py-3 bg-slate-900 text-white rounded-xl font-bold text-center w-full hover:bg-slate-800 transition-all transform hover:-translate-y-1">Book Now</a>
+                        
+                        <hr class="my-6 border-slate-200 dark:border-slate-700">
+                        
+                        <h4 class="font-bold text-slate-900 dark:text-white mb-3">Service Guarantee</h4>
+                        <div class="flex items-start gap-3">
+                            <i class="bi bi-shield-check text-primary-600 text-xl mt-1"></i>
+                            <p class="text-xs text-slate-600 dark:text-slate-400">All our services come with a 12-month / 12,000-mile warranty on parts and labor.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Template (Will be applied globally) -->
+    <footer class="bg-slate-50 dark:bg-slate-950 pt-16 pb-8 border-t border-slate-200 dark:border-slate-700">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="index.html" class="flex items-center mb-4 brand-lockup brand-lockup--footer"><img src="assets/img/logo-car-only.png" alt="AutoCare" class="brand-mark"><span class="brand-copy"><span class="brand-name">Auto<span>Care</span></span><small class="brand-tagline">Modern Auto Repair</small></span></a>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">Premium automotive repair and maintenance services you can trust. Driven by excellence.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-primary-600 hover:text-slate-900 dark:hover:text-white transition dark:text-white"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-primary-600 hover:text-slate-900 dark:hover:text-white transition dark:text-white"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="text-primary-600 hover:text-slate-900 dark:hover:text-white transition dark:text-white"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="about.html" class="hover:text-primary-600 transition">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-primary-600 transition">Our Services</a></li>
+                        <li><a href="pricing.html" class="hover:text-primary-600 transition">Pricing</a></li>
+                        <li><a href="blog.html" class="hover:text-primary-600 transition">Latest News</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="contact.html" class="hover:text-primary-600 transition">Contact Us</a></li>
+                        <li><a href="login.html" class="hover:text-primary-600 transition">Customer Portal</a></li>
+                        <li><a href="privacy.html" class="hover:text-primary-600 transition">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="hover:text-primary-600 transition">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Subscribe</h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Get maintenance tips and exclusive offers.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="w-full px-4 py-2 rounded-l-xl border border-slate-200 bg-white dark:bg-slate-700 dark:border-slate-600 text-sm outline-none">
+                        <button type="button" class="bg-slate-900 text-white px-4 py-2 rounded-r-xl text-sm font-bold hover:bg-slate-800 transition">Go</button>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center text-xs text-slate-600 dark:text-slate-500 pt-8 border-t border-slate-200 dark:border-slate-700">
+                &copy; 2026 AutoCare HTML Template. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home 2 | AutoCare</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="font-sans home-two">
+
+        <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-700 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-28">
+                <a href="index.html" class="flex items-center brand-lockup"><img src="assets/img/logo-car-only.png" alt="AutoCare car mark" class="brand-mark"><span class="brand-copy"><span class="brand-name">Auto<span>Care</span></span><small class="brand-tagline">Modern Auto Repair</small></span></a>
+                
+                <div class="hidden lg:flex items-center gap-8">
+                    <div class="relative group">
+                        <button type="button" class="nav-home-toggle text-sm font-bold text-slate-900 dark:text-white hover:text-primary-600 transition flex items-center gap-1" aria-label="Choose home page">
+                            Home <i class="bi bi-chevron-down text-[10px]"></i>
+                        </button>
+                        <div class="nav-home-menu absolute top-full left-0 mt-3 w-40 bg-white dark:bg-slate-950 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
+                            <a href="index.html" class="block px-4 py-3 text-sm font-semibold text-slate-600 dark:text-gray-300 hover:bg-slate-50 dark:hover:bg-slate-800">Home 1</a>
+                            <a href="index-2.html" class="block px-4 py-3 text-sm font-semibold text-slate-600 dark:text-gray-300 hover:bg-slate-50 dark:hover:bg-slate-800 border-t border-slate-200 dark:border-slate-700">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">About</a>
+                    <a href="services.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">Services</a>
+                    <a href="pricing.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">Pricings</a>
+                    <a href="blog.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">Blog</a>
+                    <a href="contact.html" class="text-sm font-bold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition">Contact</a>
+                </div>
+                
+                <div class="flex items-center gap-4 lg:gap-6">
+                    <div class="flex items-center gap-4 text-slate-600 dark:text-white text-lg">
+                        <button id="theme-toggle" class="hover:text-slate-900 dark:hover:text-primary-600 transition dark:text-white" title="Toggle Theme">
+                            <i class="bi bi-moon-fill dark:hidden"></i>
+                            <i class="bi bi-sun-fill hidden dark:block"></i>
+                        </button>
+                        <button id="rtl-toggle" class="font-bold text-sm hover:text-slate-900 dark:hover:text-primary-600 transition dark:text-white" title="Toggle RTL">
+                            RTL
+                        </button>
+                    </div>
+                    
+                    <div class="hidden lg:flex items-center gap-3">
+                        <a href="login.html" class="px-6 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-white text-sm font-bold hover:bg-slate-100 hover:text-slate-900 transition bg-white dark:bg-slate-950">Login</a>
+                        <a href="register.html" class="px-6 py-2 rounded-lg bg-slate-800 text-white text-sm font-bold hover:bg-slate-900 transition">Sign Up</a>
+                    </div>
+
+                    <button id="mobile-menu-btn" class="lg:hidden text-2xl text-slate-900 dark:text-white ml-2">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SaaS/Dashboard Style Hero -->
+    <section class="home-two-hero pt-32 pb-20 overflow-hidden relative">
+        <div class="absolute inset-0 -z-10"></div>
+        <div class="absolute top-0 right-0 -mr-40 -mt-40 w-[600px] h-[600px] bg-primary-500/10 rounded-full blur-3xl -z-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="animate-fade-in">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-slate-900 dark:text-white leading-tight mb-6">
+                        Expert Car Repairs, <span class="text-primary-600">Delivered Faster.</span>
+                    </h1>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-lg">
+                        Book a service, track maintenance in real-time, and let our master technicians handle everything from basic oil changes to complex diagnostics.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="booking.html" class="btn-primary py-3 px-8 rounded-lg shadow-lg shadow-primary-500/30">Book Service Now</a>
+                        <a href="services.html" class="btn-outline py-3 px-8 rounded-lg">View Pricing</a>
+                    </div>
+                </div>
+                
+                <!-- Dashboard Mockup Image -->
+                <div class="relative animate-slide-up">
+                    <img src="assets/img/saas-dashboard.jpg" alt="AutoCare service management dashboard" class="home-two-hero__image w-full rounded-2xl shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRAND LOGOS STRIP -->
+    <section class="py-10 bg-white border-b border-slate-200 dark:bg-slate-900 dark:border-slate-700">
+        <div class="max-w-7xl mx-auto px-6 overflow-hidden">
+            <p class="text-center text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">Brands We Service</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                <div class="flex items-center gap-2 font-bold text-xl text-slate-800 dark:text-slate-200"><i class="bi bi-car-front-fill"></i> Toyota</div>
+                <div class="flex items-center gap-2 font-bold text-xl text-slate-800 dark:text-slate-200"><i class="bi bi-car-front-fill"></i> Honda</div>
+                <div class="flex items-center gap-2 font-bold text-xl text-slate-800 dark:text-slate-200"><i class="bi bi-car-front-fill"></i> Ford</div>
+                <div class="flex items-center gap-2 font-bold text-xl text-slate-800 dark:text-slate-200"><i class="bi bi-car-front-fill"></i> BMW</div>
+                <div class="flex items-center gap-2 font-bold text-xl text-slate-800 dark:text-slate-200"><i class="bi bi-car-front-fill"></i> Mercedes</div>
+                <div class="flex items-center gap-2 font-bold text-xl text-slate-800 dark:text-slate-200"><i class="bi bi-car-front-fill"></i> Audi</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VEHICLE TYPES -->
+    <section class="pt-24 pb-16 bg-slate-50 dark:bg-slate-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <h2 class="section-title">We Service All Makes & Models</h2>
+                <h3 class="text-3xl font-semibold text-slate-900 dark:text-white">What do you drive?</h3>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl text-center border border-slate-200 dark:border-slate-700 hover:border-primary-600 transition-colors shadow-sm group">
+                    <i class="bi bi-car-front text-5xl text-slate-400 group-hover:text-primary-600 transition-colors mb-4 block"></i>
+                    <h4 class="font-bold text-slate-900 dark:text-white">Sedans & Coupes</h4>
+                </div>
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl text-center border border-slate-200 dark:border-slate-700 hover:border-primary-600 transition-colors shadow-sm group">
+                    <i class="bi bi-truck-front text-5xl text-slate-400 group-hover:text-primary-600 transition-colors mb-4 block"></i>
+                    <h4 class="font-bold text-slate-900 dark:text-white">SUVs & Crossovers</h4>
+                </div>
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl text-center border border-slate-200 dark:border-slate-700 hover:border-primary-600 transition-colors shadow-sm group">
+                    <i class="bi bi-truck text-5xl text-slate-400 group-hover:text-primary-600 transition-colors mb-4 block"></i>
+                    <h4 class="font-bold text-slate-900 dark:text-white">Trucks & Vans</h4>
+                </div>
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl text-center border border-slate-200 dark:border-slate-700 hover:border-primary-600 transition-colors shadow-sm group">
+                    <i class="bi bi-lightning-charge text-5xl text-slate-400 group-hover:text-primary-600 transition-colors mb-4 block"></i>
+                    <h4 class="font-bold text-slate-900 dark:text-white">Hybrid & EV</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US / TURNAROUND -->
+    <section class="home-two-operations py-20">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <p class="home-two-eyebrow">Reliability You Can Count On</p>
+                <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-5">Everything your vehicle needs to keep moving safely.</h2>
+                <p class="home-two-copy max-w-xl">We've built our reputation on honest communication, fair pricing, and getting the job done right the first time.</p>
+                <div class="grid grid-cols-3 gap-3 sm:gap-5 mt-9">
+                    <div class="home-two-stat"><strong>12 months</strong><span>Warranty</span></div>
+                    <div class="home-two-stat"><strong>ASE</strong><span>Certified</span></div>
+                    <div class="home-two-stat"><strong>4.9/5</strong><span>Rating</span></div>
+                </div>
+            </div>
+            <div class="home-two-flow">
+                <div class="home-two-flow__item"><span>01</span><div><h3>Transparent Pricing</h3><p>No hidden fees, no unnecessary upsells. Digital quotes provided.</p></div><i class="bi bi-tags-fill"></i></div>
+                <div class="home-two-flow__item"><span>02</span><div><h3>Fast Turnaround</h3><p>80% of our jobs are completed with same-day return.</p></div><i class="bi bi-speedometer2"></i></div>
+                <div class="home-two-flow__item"><span>03</span><div><h3>Expert Mechanics</h3><p>Decades of combined experience across all major brands.</p></div><i class="bi bi-tools"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATISTICS SECTION -->
+    <section class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('assets/img/hero_bg.jpg')] opacity-20 bg-cover bg-center bg-fixed mix-blend-overlay"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6 border border-white/10 rounded-3xl bg-white/5 backdrop-blur-sm">
+                    <div class="text-5xl font-bold text-primary-400 mb-2">15+</div>
+                    <div class="text-sm uppercase tracking-wider text-slate-300 font-semibold">Years Experience</div>
+                </div>
+                <div class="p-6 border border-white/10 rounded-3xl bg-white/5 backdrop-blur-sm">
+                    <div class="text-5xl font-bold text-primary-400 mb-2">10k+</div>
+                    <div class="text-sm uppercase tracking-wider text-slate-300 font-semibold">Vehicles Serviced</div>
+                </div>
+                <div class="p-6 border border-white/10 rounded-3xl bg-white/5 backdrop-blur-sm">
+                    <div class="text-5xl font-bold text-primary-400 mb-2">24</div>
+                    <div class="text-sm uppercase tracking-wider text-slate-300 font-semibold">Expert Mechanics</div>
+                </div>
+                <div class="p-6 border border-white/10 rounded-3xl bg-white/5 backdrop-blur-sm">
+                    <div class="text-5xl font-bold text-primary-400 mb-2">99%</div>
+                    <div class="text-sm uppercase tracking-wider text-slate-300 font-semibold">Happy Clients</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="py-24 bg-white dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-primary-600 font-semibold tracking-widest text-sm uppercase mb-3">Simple Process</h2>
+                <h3 class="text-4xl font-bold text-slate-900 dark:text-white">How AutoCare Works</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+                <!-- Connecting Line for Desktop -->
+                <div class="hidden md:block absolute top-12 left-[15%] right-[15%] h-0.5 bg-slate-200 dark:bg-slate-700 z-0"></div>
+                
+                <div class="relative z-10 text-center">
+                    <div class="w-24 h-24 mx-auto bg-white dark:bg-slate-800 rounded-full border-4 border-slate-50 dark:border-slate-900 shadow-xl flex items-center justify-center text-3xl text-primary-600 font-bold mb-6">
+                        <i class="bi bi-calendar-check"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-3">1. Book Appointment</h4>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">Schedule your visit online in under 2 minutes. Pick a date and time that works for you.</p>
+                </div>
+                
+                <div class="relative z-10 text-center">
+                    <div class="w-24 h-24 mx-auto bg-primary-600 text-white rounded-full border-4 border-white dark:border-slate-900 shadow-xl flex items-center justify-center text-3xl font-bold mb-6">
+                        <i class="bi bi-tools"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-3">2. Drop Off Vehicle</h4>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">Bring your car in. Our certified mechanics will perform a comprehensive digital inspection.</p>
+                </div>
+                
+                <div class="relative z-10 text-center">
+                    <div class="w-24 h-24 mx-auto bg-white dark:bg-slate-800 rounded-full border-4 border-slate-50 dark:border-slate-900 shadow-xl flex items-center justify-center text-3xl text-primary-600 font-bold mb-6">
+                        <i class="bi bi-car-front-fill"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-3">3. Drive Away Safely</h4>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">Approve repairs, pay online, and get back on the road safely with our 12-month warranty.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- OFFERS -->
+    <section class="py-16 bg-primary-600 text-white mt-10 mb-10 mx-6 rounded-3xl overflow-hidden relative max-w-7xl lg:mx-auto shadow-2xl">
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle,white_1px,transparent_1px)] [background-size:20px_20px]"></div>
+        </div>
+        <div class="relative z-10 px-8 text-center max-w-3xl mx-auto">
+            <h2 class="text-primary-100 font-bold uppercase tracking-widest text-sm mb-4">Limited Time Offers</h2>
+            <h3 class="text-3xl md:text-5xl font-bold mb-6">Get  Off Your First Full Service</h3>
+            <p class="text-white/90 mb-8">Experience the AutoCare difference. Book any full service package this month and save.</p>
+            <a href="booking.html" class="inline-block bg-white text-primary-600 px-8 py-3 rounded-xl font-bold hover:bg-slate-100 transition-all shadow-lg">Claim Offer</a>
+            <p class="text-xs text-primary-200 mt-4">Valid for new customers only. Cannot be combined with other offers.</p>
+        </div>
+    </section>
+
+    <!-- LOCATIONS -->
+    <section class="py-16 bg-white dark:bg-slate-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-10">
+                <h2 class="section-title">Our Shops</h2>
+                <h3 class="text-4xl font-semibold text-slate-900 dark:text-white">Convenient Service Locations</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="border border-slate-200 dark:border-slate-700 rounded-3xl overflow-hidden shadow-sm flex flex-col md:flex-row">
+                    <div class="md:w-2/5 min-h-[200px]"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes+Square!5e0!3m2!1sen!2sus!4v1560815815269!5m2!1sen!2sus" class="w-full h-full min-h-[200px]" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+                    <div class="p-8 md:w-3/5 bg-white dark:bg-slate-900 flex flex-col justify-center">
+                        <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Downtown Center</h4>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4 text-sm"><i class="bi bi-geo-alt-fill text-primary-600 mr-2"></i>123 Main St, Metro City, 10001</p>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-6"><i class="bi bi-clock-fill text-primary-600 mr-2"></i>Mon-Fri: 8am - 6pm</p>
+                        <a href="contact.html" class="text-primary-600 font-bold hover:text-slate-900 dark:hover:text-white transition-colors text-sm">Get Directions &rarr;</a>
+                    </div>
+                </div>
+                <div class="border border-slate-200 dark:border-slate-700 rounded-3xl overflow-hidden shadow-sm flex flex-col md:flex-row">
+                    <div class="md:w-2/5 min-h-[200px]"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes+Square!5e0!3m2!1sen!2sus!4v1560815815269!5m2!1sen!2sus" class="w-full h-full min-h-[200px]" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+                    <div class="p-8 md:w-3/5 bg-white dark:bg-slate-900 flex flex-col justify-center">
+                        <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Westside Garage</h4>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4 text-sm"><i class="bi bi-geo-alt-fill text-primary-600 mr-2"></i>456 West Blvd, Metro City, 10024</p>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-6"><i class="bi bi-clock-fill text-primary-600 mr-2"></i>Mon-Sat: 7am - 7pm</p>
+                        <a href="contact.html" class="text-primary-600 font-bold hover:text-slate-900 dark:hover:text-white transition-colors text-sm">Get Directions &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Template (Will be applied globally) -->
+    <footer class="bg-slate-50 dark:bg-slate-950 pt-16 pb-8 border-t border-slate-200 dark:border-slate-700">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="index.html" class="flex items-center mb-4 brand-lockup brand-lockup--footer"><img src="assets/img/logo-car-only.png" alt="AutoCare" class="brand-mark"><span class="brand-copy"><span class="brand-name">Auto<span>Care</span></span><small class="brand-tagline">Modern Auto Repair</small></span></a>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">Premium automotive repair and maintenance services you can trust. Driven by excellence.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-primary-600 hover:text-slate-900 dark:hover:text-white transition dark:text-white"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-primary-600 hover:text-slate-900 dark:hover:text-white transition dark:text-white"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="text-primary-600 hover:text-slate-900 dark:hover:text-white transition dark:text-white"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="about.html" class="hover:text-primary-600 transition">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-primary-600 transition">Our Services</a></li>
+                        <li><a href="pricing.html" class="hover:text-primary-600 transition">Pricing</a></li>
+                        <li><a href="blog.html" class="hover:text-primary-600 transition">Latest News</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="contact.html" class="hover:text-primary-600 transition">Contact Us</a></li>
+                        <li><a href="login.html" class="hover:text-primary-600 transition">Customer Portal</a></li>
+                        <li><a href="privacy.html" class="hover:text-primary-600 transition">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="hover:text-primary-600 transition">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Subscribe</h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Get maintenance tips and exclusive offers.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="w-full px-4 py-2 rounded-l-xl border border-slate-200 bg-white dark:bg-slate-700 dark:border-slate-600 text-sm outline-none">
+                        <button type="button" class="bg-slate-900 text-white px-4 py-2 rounded-r-xl text-sm font-bold hover:bg-slate-800 transition">Go</button>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center text-xs text-slate-600 dark:text-slate-500 pt-8 border-t border-slate-200 dark:border-slate-700">
+                &copy; 2026 AutoCare HTML Template. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
