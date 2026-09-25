@@ -60,87 +60,36 @@ function toggleRTL() {
 // Mobile Menu Toggle
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
     if (menu) {
-        menu.classList.toggle('hidden');
-        const isOpen = !menu.classList.contains('hidden');
+        const isClosed = menu.classList.contains('translate-x-full');
+        
+        if (isClosed) {
+            // Open
+            if(backdrop) {
+                backdrop.classList.remove('hidden');
+                setTimeout(() => backdrop.classList.remove('opacity-0'), 10);
+            }
+            menu.classList.remove('translate-x-full');
+        } else {
+            // Close
+            if(backdrop) {
+                backdrop.classList.add('opacity-0');
+                setTimeout(() => backdrop.classList.add('hidden'), 300);
+            }
+            menu.classList.add('translate-x-full');
+        }
+        
         const button = document.getElementById('mobile-menu-btn');
         if (button) {
-            button.setAttribute('aria-expanded', String(isOpen));
-            button.querySelector('i')?.classList.toggle('bi-list', !isOpen);
-            button.querySelector('i')?.classList.toggle('bi-x-lg', isOpen);
+            button.setAttribute('aria-expanded', String(isClosed));
         }
     }
 }
 
-function addMobileMenuIfMissing() {
-    const menuButton = document.getElementById('mobile-menu-btn');
-    const publicNav = document.querySelector('nav.fixed');
 
-    // Portal pages use their own responsive navigation; marketing pages share this menu.
-    if (!menuButton || !publicNav || document.getElementById('mobile-menu')) return;
 
-    const menu = document.createElement('div');
-    menu.id = 'mobile-menu';
-    menu.className = 'hidden lg:hidden fixed top-[5.5rem] inset-x-0 bottom-0 z-[100] overflow-y-auto border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 p-4 shadow-2xl';
-    menu.innerHTML = `
-        <div class="space-y-2">
-            <div class="space-y-1">
-                <div class="px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 flex items-center min-h-[3.15rem]">Home</div>
-                <a href="index.html" class="pl-8 pr-3 py-2 text-sm font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">Home 1</a>
-                <a href="index-2.html" class="pl-8 pr-3 py-2 text-sm font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">Home 2</a>
-            </div>
-            <a href="about.html" class="px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">About</a>
-            <a href="services.html" class="px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">Services</a>
-            <a href="pricing.html" class="px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">Products</a>
-            <a href="blog.html" class="px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">Blog</a>
-            <a href="contact.html" class="px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">Contact</a>
-            <div class="border-t border-slate-200 dark:border-slate-700 mt-4 pt-4 flex flex-col gap-3">
-                <a href="login.html" class="justify-center px-3 py-2 text-base font-bold text-slate-600 dark:text-white border border-slate-200 dark:border-slate-700 rounded-lg">Login</a>
-                <a href="register.html" class="justify-center px-3 py-2 text-base font-bold text-white bg-slate-800 rounded-lg">Sign Up</a>
-            </div>
-        </div>`;
 
-    publicNav.appendChild(menu);
-}
-
-function prepareMobileMenuOverlay() {
-    const menu = document.getElementById('mobile-menu');
-    if (!menu) return;
-
-    // Keep the sheet outside the fixed header. This prevents page sections with
-    // their own stacking layers from appearing above the menu or blocking links.
-    if (menu.parentElement !== document.body) document.body.appendChild(menu);
-
-    Object.assign(menu.style, {
-        position: 'fixed',
-        top: '5.5rem',
-        right: '0',
-        bottom: '0',
-        left: '0',
-        zIndex: '9999',
-        overflowY: 'auto',
-        padding: '1rem 1.25rem 2rem',
-        backgroundColor: 'var(--surface)',
-        borderTop: '1px solid var(--line)',
-        boxShadow: '0 18px 35px rgba(22, 32, 51, .12)'
-    });
-
-    const menuContent = menu.firstElementChild;
-    if (menuContent) {
-        Object.assign(menuContent.style, {
-            width: '100%',
-            maxWidth: '19.4rem',
-            margin: '1.5rem auto 0',
-            padding: '0'
-        });
-    }
-
-    menu.querySelectorAll('a').forEach(link => {
-        link.style.minHeight = '3.15rem';
-        link.style.display = 'flex';
-        link.style.alignItems = 'center';
-    });
-}
 
 // Initialize everything on load
 // Custom Alert Modal Function
@@ -175,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     initRTL();
     addMobileMenuIfMissing();
-    prepareMobileMenuOverlay();
     
     // Add event listeners for toggles if they exist
     const themeBtns = document.querySelectorAll('#theme-toggle');
@@ -192,11 +140,13 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenuBtn.addEventListener('click', toggleMobileMenu);
     }
     if (mobileMenuCloseBtn) mobileMenuCloseBtn.addEventListener('click', toggleMobileMenu);
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    if (backdrop) backdrop.addEventListener('click', toggleMobileMenu);
 
     document.querySelectorAll('#mobile-menu a').forEach(link => {
         link.addEventListener('click', () => {
             const menu = document.getElementById('mobile-menu');
-            if (menu && !menu.classList.contains('hidden')) toggleMobileMenu();
+            if (menu && !menu.classList.contains('translate-x-full')) toggleMobileMenu();
         });
     });
 
@@ -277,3 +227,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+function addMobileMenuIfMissing() {
+    const menuButton = document.getElementById('mobile-menu-btn');
+    const publicNav = document.querySelector('nav.fixed');
+    if (!menuButton || !publicNav || document.getElementById('mobile-menu')) return;
+
+    // Create backdrop
+    const backdrop = document.createElement('div');
+    backdrop.id = 'mobile-menu-backdrop';
+    backdrop.className = 'fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[90] hidden opacity-0 transition-opacity duration-300 xl:hidden';
+    document.body.appendChild(backdrop);
+
+    // Create sidebar
+    const menu = document.createElement('div');
+    menu.id = 'mobile-menu';
+    menu.className = 'fixed top-0 right-0 w-[85%] max-w-sm h-full bg-white dark:bg-slate-950 shadow-2xl z-[100] transform translate-x-full transition-transform duration-300 flex flex-col xl:hidden';
+    menu.innerHTML = `<div class="flex items-center justify-between px-6 pt-6 pb-2 shrink-0">
+                <a href="index.html" class="flex items-center brand-lockup"><img src="assets/img/logo-car-only.png" alt="AutoCare" class="brand-mark h-10"><span class="brand-copy"><span class="brand-name">Auto<span class="text-primary-600">Care</span></span></span></a>
+                <div class="flex items-center gap-2 sm:gap-4 text-slate-600 dark:text-white">
+                    
+                    
+                    <button id="mobile-menu-close" class="text-2xl ml-1 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="px-6 py-2 space-y-2 flex-1 overflow-y-auto">
+                <div class="space-y-1">
+                    <button id="mobile-home-toggle" class="flex w-full items-center justify-between px-3 py-2 text-base font-bold text-[#b91c1c] bg-red-50 dark:bg-red-900/20 dark:text-red-400 rounded-lg transition-colors">
+                        <span>Home</span>
+                        <i class="bi bi-chevron-down text-sm transition-transform duration-200"></i>
+                    </button>
+                    <div id="mobile-home-dropdown" class="hidden pl-4 space-y-1 mt-1">
+                        <a href="index.html" class="block px-3 py-2 text-sm font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg transition-colors">Home 1</a>
+                        <a href="index-2.html" class="block px-3 py-2 text-sm font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg transition-colors">Home 2</a>
+                    </div>
+                </div>
+                <a href="about.html" class="block px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg transition-colors">About</a>
+                <a href="services.html" class="block px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg transition-colors">Services</a>
+                <a href="pricing.html" class="block px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg transition-colors">Pricings</a>
+                <a href="blog.html" class="block px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg transition-colors">Blog</a>
+                <a href="contact.html" class="block px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg transition-colors">Contact</a>
+                <a href="customer/dashboard.html" class="block px-3 py-2 text-base font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg transition-colors">Dashboard</a>
+            </div>
+            <div class="px-6 pt-4 pb-8 shrink-0">
+                <div class="flex flex-col gap-3">
+                    <a href="login.html" class="flex justify-center items-center px-3 py-3 text-base font-bold text-[#b91c1c] dark:text-[#f87171] border border-[#b91c1c] dark:border-[#f87171] rounded-full hover:bg-[#b91c1c] hover:text-white dark:hover:bg-[#f87171] dark:hover:text-slate-900 transition-colors shadow-sm">Login</a>
+                    <a href="register.html" class="flex justify-center items-center px-3 py-3 text-base font-bold text-white bg-[#b91c1c] dark:bg-[#dc2626] rounded-full hover:bg-[#991b1b] transition-colors shadow-md">Book Free Trial</a>
+                </div>
+            </div>`; document.body.appendChild(menu);
+}
+
+
+
